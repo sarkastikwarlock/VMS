@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Admin Suite">
+  <test name="Admin">
+  	<groups>
+    	<run>
+      		<include name="admin"  />
+      		<include name="UI"  />  		
+      		<exclude name="patient"  />
+    	</run>
+  	</groups>
+    <classes>
+      <class name="ui.TestCases"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->

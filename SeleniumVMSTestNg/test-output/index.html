@@ -1,0 +1,933 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+  <meta charset='utf-8'>
+  <title>TestNG reports</title>
+
+    <link type="text/css" href="testng-reports1.css" rel="stylesheet" id="ultra" />
+    <link type="text/css" href="testng-reports.css" rel="stylesheet" id="retro" disabled="false"/>
+    <script type="text/javascript" src="jquery.min.js"></script>
+    <script type="text/javascript" src="testng-reports.js"></script>
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type='text/javascript'>
+      google.load('visualization', '1', {packages:['table']});
+      google.setOnLoadCallback(drawTable);
+      var suiteTableInitFunctions = new Array();
+      var suiteTableData = new Array();
+    </script>
+    <!--
+      <script type="text/javascript" src="jquery-ui/js/jquery-ui-1.8.16.custom.min.js"></script>
+     -->
+  </head>
+
+  <body>
+    <div class="top-banner-root">
+      <span class="top-banner-title-font">Test results</span>
+      <button id="button" class="button">Switch Retro Theme</button> <!-- button -->
+      <br/>
+      <span class="top-banner-font-1">1 suite</span>
+    </div> <!-- top-banner-root -->
+    <div class="navigator-root">
+      <div class="navigator-suite-header">
+        <span>All suites</span>
+        <a href="#" title="Collapse/expand all the suites" class="collapse-all-link">
+          <img src="collapseall.gif" class="collapse-all-icon">
+          </img> <!-- collapse-all-icon -->
+        </a> <!-- collapse-all-link -->
+      </div> <!-- navigator-suite-header -->
+      <div class="suite">
+        <div class="rounded-window">
+          <div class="suite-header light-rounded-window-top">
+            <a href="#" panel-name="suite-Patient_Suite" class="navigator-link">
+              <span class="suite-name border-passed">Patient Suite</span>
+            </a> <!-- navigator-link -->
+          </div> <!-- suite-header light-rounded-window-top -->
+          <div class="navigator-suite-content">
+            <div class="suite-section-title">
+              <span>Info</span>
+            </div> <!-- suite-section-title -->
+            <div class="suite-section-content">
+              <ul>
+                <li>
+                  <a href="#" panel-name="test-xml-Patient_Suite" class="navigator-link ">
+                    <span>C:\Users\druml\selenium\SeleniumVMSTestNg\patient.xml</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="testlist-Patient_Suite" class="navigator-link ">
+                    <span class="test-stats">1 test</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="group-Patient_Suite" class="navigator-link ">
+                    <span>2 groups</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="times-Patient_Suite" class="navigator-link ">
+                    <span>Times</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="reporter-Patient_Suite" class="navigator-link ">
+                    <span>Reporter output</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="ignored-methods-Patient_Suite" class="navigator-link ">
+                    <span>Ignored methods</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+                <li>
+                  <a href="#" panel-name="chronological-Patient_Suite" class="navigator-link ">
+                    <span>Chronological view</span>
+                  </a> <!-- navigator-link  -->
+                </li>
+              </ul>
+            </div> <!-- suite-section-content -->
+            <div class="result-section">
+              <div class="suite-section-title">
+                <span>Results</span>
+              </div> <!-- suite-section-title -->
+              <div class="suite-section-content">
+                <ul>
+                  <li>
+                    <span class="method-stats">20 methods,   20 passed</span>
+                  </li>
+                  <li>
+                    <span class="method-list-title passed">Passed methods</span>
+                    <span class="show-or-hide-methods passed">
+                      <a href="#" panel-name="suite-Patient_Suite" class="hide-methods passed suite-Patient_Suite"> (hide)</a> <!-- hide-methods passed suite-Patient_Suite -->
+                      <a href="#" panel-name="suite-Patient_Suite" class="show-methods passed suite-Patient_Suite"> (show)</a> <!-- show-methods passed suite-Patient_Suite -->
+                    </span>
+                    <div class="method-list-content passed suite-Patient_Suite">
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkBookPageContent">checkBookPageContent</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditModalPositiveCase">checkEditModalPositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditModalWithValidationNegativeCase">checkEditModalWithValidationNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientClickable">checkEditPatientClickable</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientInfomationPatternValidation">checkEditPatientInfomationPatternValidation</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase">checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientModalContentNegativeCase">checkEditPatientModalContentNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientModalContentPositiveCase">checkEditPatientModalContentPositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditPatientSaveChangePositiveCase">checkEditPatientSaveChangePositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkEditScheduleContent">checkEditScheduleContent</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkNavigateToBookPage">checkNavigateToBookPage</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkPatientPageNegativeCase">checkPatientPageNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkPatientPagePositiveCase">checkPatientPagePositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkPersonalInformationPageNegativeCase">checkPersonalInformationPageNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkPersonalInformationPagePositiveCase">checkPersonalInformationPagePositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkSessionPatient">checkSessionPatient</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkSubmitBookSlotNegativeCase">checkSubmitBookSlotNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkSubmitBookSlotPositiveCase">checkSubmitBookSlotPositiveCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkSubmitBookSlotWithValidationNegativeCase">checkSubmitBookSlotWithValidationNegativeCase</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                      <span>
+                        <img src="passed.png" width="3%"/>
+                        <a href="#" panel-name="suite-Patient_Suite" title="ui.TestCases" class="method navigator-link" hash-for-method="checkViewVaccinationContent">checkViewVaccinationContent</a> <!-- method navigator-link -->
+                      </span>
+                      <br/>
+                    </div> <!-- method-list-content passed suite-Patient_Suite -->
+                  </li>
+                </ul>
+              </div> <!-- suite-section-content -->
+            </div> <!-- result-section -->
+          </div> <!-- navigator-suite-content -->
+        </div> <!-- rounded-window -->
+      </div> <!-- suite -->
+    </div> <!-- navigator-root -->
+    <div class="wrapper">
+      <div class="main-panel-root">
+        <div panel-name="suite-Patient_Suite" class="panel Patient_Suite">
+          <div class="suite-Patient_Suite-class-passed">
+            <div class="main-panel-header rounded-window-top">
+              <img src="passed.png"/>
+              <span class="class-name">ui.TestCases</span>
+            </div> <!-- main-panel-header rounded-window-top -->
+            <div class="main-panel-content rounded-window-bottom">
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkBookPageContent">
+                  </a> <!-- checkBookPageContent -->
+                  <span class="method-name">checkBookPageContent</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditModalPositiveCase">
+                  </a> <!-- checkEditModalPositiveCase -->
+                  <span class="method-name">checkEditModalPositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditModalWithValidationNegativeCase">
+                  </a> <!-- checkEditModalWithValidationNegativeCase -->
+                  <span class="method-name">checkEditModalWithValidationNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientClickable">
+                  </a> <!-- checkEditPatientClickable -->
+                  <span class="method-name">checkEditPatientClickable</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientInfomationPatternValidation">
+                  </a> <!-- checkEditPatientInfomationPatternValidation -->
+                  <span class="method-name">checkEditPatientInfomationPatternValidation</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase">
+                  </a> <!-- checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase -->
+                  <span class="method-name">checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientModalContentNegativeCase">
+                  </a> <!-- checkEditPatientModalContentNegativeCase -->
+                  <span class="method-name">checkEditPatientModalContentNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientModalContentPositiveCase">
+                  </a> <!-- checkEditPatientModalContentPositiveCase -->
+                  <span class="method-name">checkEditPatientModalContentPositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditPatientSaveChangePositiveCase">
+                  </a> <!-- checkEditPatientSaveChangePositiveCase -->
+                  <span class="method-name">checkEditPatientSaveChangePositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkEditScheduleContent">
+                  </a> <!-- checkEditScheduleContent -->
+                  <span class="method-name">checkEditScheduleContent</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkNavigateToBookPage">
+                  </a> <!-- checkNavigateToBookPage -->
+                  <span class="method-name">checkNavigateToBookPage</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkPatientPageNegativeCase">
+                  </a> <!-- checkPatientPageNegativeCase -->
+                  <span class="method-name">checkPatientPageNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkPatientPagePositiveCase">
+                  </a> <!-- checkPatientPagePositiveCase -->
+                  <span class="method-name">checkPatientPagePositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkPersonalInformationPageNegativeCase">
+                  </a> <!-- checkPersonalInformationPageNegativeCase -->
+                  <span class="method-name">checkPersonalInformationPageNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkPersonalInformationPagePositiveCase">
+                  </a> <!-- checkPersonalInformationPagePositiveCase -->
+                  <span class="method-name">checkPersonalInformationPagePositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkSessionPatient">
+                  </a> <!-- checkSessionPatient -->
+                  <span class="method-name">checkSessionPatient</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkSubmitBookSlotNegativeCase">
+                  </a> <!-- checkSubmitBookSlotNegativeCase -->
+                  <span class="method-name">checkSubmitBookSlotNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkSubmitBookSlotPositiveCase">
+                  </a> <!-- checkSubmitBookSlotPositiveCase -->
+                  <span class="method-name">checkSubmitBookSlotPositiveCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkSubmitBookSlotWithValidationNegativeCase">
+                  </a> <!-- checkSubmitBookSlotWithValidationNegativeCase -->
+                  <span class="method-name">checkSubmitBookSlotWithValidationNegativeCase</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+              <div class="method">
+                <div class="method-content">
+                  <a name="checkViewVaccinationContent">
+                  </a> <!-- checkViewVaccinationContent -->
+                  <span class="method-name">checkViewVaccinationContent</span>
+                </div> <!-- method-content -->
+              </div> <!-- method -->
+            </div> <!-- main-panel-content rounded-window-bottom -->
+          </div> <!-- suite-Patient_Suite-class-passed -->
+        </div> <!-- panel Patient_Suite -->
+        <div panel-name="test-xml-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">C:\Users\druml\selenium\SeleniumVMSTestNg\patient.xml</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <pre>
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;!DOCTYPE suite SYSTEM &quot;https://testng.org/testng-1.0.dtd&quot;&gt;
+&lt;suite name=&quot;Patient Suite&quot; guice-stage=&quot;DEVELOPMENT&quot;&gt;
+  &lt;test thread-count=&quot;5&quot; name=&quot;Patient&quot;&gt;
+    &lt;groups&gt;
+      &lt;run&gt;
+        &lt;include name=&quot;patient&quot;/&gt;
+        &lt;include name=&quot;UI&quot;/&gt;
+        &lt;exclude name=&quot;admin&quot;/&gt;
+      &lt;/run&gt;
+    &lt;/groups&gt;
+    &lt;classes&gt;
+      &lt;class name=&quot;ui.TestCases&quot;/&gt;
+    &lt;/classes&gt;
+  &lt;/test&gt; &lt;!-- Patient --&gt;
+&lt;/suite&gt; &lt;!-- Patient Suite --&gt;
+            </pre>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="testlist-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Tests for Patient Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <ul>
+              <li>
+                <span class="test-name">Patient (1 class)</span>
+              </li>
+            </ul>
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="group-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Groups for Patient Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="test-group">
+              <span class="test-group-name">UI</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkBookPageContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditModalPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditModalWithValidationNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientClickable</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientInfomationPatternValidation</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientModalContentNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientModalContentPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientSaveChangePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditScheduleContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkNavigateToBookPage</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPatientPageNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPatientPagePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPersonalInformationPageNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPersonalInformationPagePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSessionPatient</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotWithValidationNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkViewVaccinationContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+            <div class="test-group">
+              <span class="test-group-name">patient</span>
+              <br/>
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkBookPageContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditModalPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditModalWithValidationNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientClickable</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientInfomationPatternValidation</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientModalContentNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientModalContentPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditPatientSaveChangePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkEditScheduleContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkNavigateToBookPage</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPatientPageNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPatientPagePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPersonalInformationPageNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkPersonalInformationPagePositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSessionPatient</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotPositiveCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkSubmitBookSlotWithValidationNegativeCase</span>
+                <br/>
+              </div> <!-- method-in-group -->
+              <div class="method-in-group">
+                <span class="method-in-group-name">checkViewVaccinationContent</span>
+                <br/>
+              </div> <!-- method-in-group -->
+            </div> <!-- test-group -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="times-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Times for Patient Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="times-div">
+              <script type="text/javascript">
+suiteTableInitFunctions.push('tableData_Patient_Suite');
+function tableData_Patient_Suite() {
+var data = new google.visualization.DataTable();
+data.addColumn('number', 'Number');
+data.addColumn('string', 'Method');
+data.addColumn('string', 'Class');
+data.addColumn('number', 'Time (ms)');
+data.addRows(20);
+data.setCell(0, 0, 0)
+data.setCell(0, 1, 'checkSubmitBookSlotWithValidationNegativeCase')
+data.setCell(0, 2, 'ui.TestCases')
+data.setCell(0, 3, 9837);
+data.setCell(1, 0, 1)
+data.setCell(1, 1, 'checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase')
+data.setCell(1, 2, 'ui.TestCases')
+data.setCell(1, 3, 8580);
+data.setCell(2, 0, 2)
+data.setCell(2, 1, 'checkEditModalWithValidationNegativeCase')
+data.setCell(2, 2, 'ui.TestCases')
+data.setCell(2, 3, 7985);
+data.setCell(3, 0, 3)
+data.setCell(3, 1, 'checkEditModalPositiveCase')
+data.setCell(3, 2, 'ui.TestCases')
+data.setCell(3, 3, 7874);
+data.setCell(4, 0, 4)
+data.setCell(4, 1, 'checkSubmitBookSlotPositiveCase')
+data.setCell(4, 2, 'ui.TestCases')
+data.setCell(4, 3, 7670);
+data.setCell(5, 0, 5)
+data.setCell(5, 1, 'checkEditPatientSaveChangePositiveCase')
+data.setCell(5, 2, 'ui.TestCases')
+data.setCell(5, 3, 7459);
+data.setCell(6, 0, 6)
+data.setCell(6, 1, 'checkEditPatientInfomationPatternValidation')
+data.setCell(6, 2, 'ui.TestCases')
+data.setCell(6, 3, 4891);
+data.setCell(7, 0, 7)
+data.setCell(7, 1, 'checkEditPatientModalContentPositiveCase')
+data.setCell(7, 2, 'ui.TestCases')
+data.setCell(7, 3, 4654);
+data.setCell(8, 0, 8)
+data.setCell(8, 1, 'checkBookPageContent')
+data.setCell(8, 2, 'ui.TestCases')
+data.setCell(8, 3, 4254);
+data.setCell(9, 0, 9)
+data.setCell(9, 1, 'checkSubmitBookSlotNegativeCase')
+data.setCell(9, 2, 'ui.TestCases')
+data.setCell(9, 3, 3875);
+data.setCell(10, 0, 10)
+data.setCell(10, 1, 'checkEditPatientModalContentNegativeCase')
+data.setCell(10, 2, 'ui.TestCases')
+data.setCell(10, 3, 3527);
+data.setCell(11, 0, 11)
+data.setCell(11, 1, 'checkViewVaccinationContent')
+data.setCell(11, 2, 'ui.TestCases')
+data.setCell(11, 3, 3493);
+data.setCell(12, 0, 12)
+data.setCell(12, 1, 'checkEditScheduleContent')
+data.setCell(12, 2, 'ui.TestCases')
+data.setCell(12, 3, 2978);
+data.setCell(13, 0, 13)
+data.setCell(13, 1, 'checkEditPatientClickable')
+data.setCell(13, 2, 'ui.TestCases')
+data.setCell(13, 3, 2217);
+data.setCell(14, 0, 14)
+data.setCell(14, 1, 'checkPersonalInformationPagePositiveCase')
+data.setCell(14, 2, 'ui.TestCases')
+data.setCell(14, 3, 2211);
+data.setCell(15, 0, 15)
+data.setCell(15, 1, 'checkPersonalInformationPageNegativeCase')
+data.setCell(15, 2, 'ui.TestCases')
+data.setCell(15, 3, 2166);
+data.setCell(16, 0, 16)
+data.setCell(16, 1, 'checkNavigateToBookPage')
+data.setCell(16, 2, 'ui.TestCases')
+data.setCell(16, 3, 2146);
+data.setCell(17, 0, 17)
+data.setCell(17, 1, 'checkSessionPatient')
+data.setCell(17, 2, 'ui.TestCases')
+data.setCell(17, 3, 1173);
+data.setCell(18, 0, 18)
+data.setCell(18, 1, 'checkPatientPagePositiveCase')
+data.setCell(18, 2, 'ui.TestCases')
+data.setCell(18, 3, 1074);
+data.setCell(19, 0, 19)
+data.setCell(19, 1, 'checkPatientPageNegativeCase')
+data.setCell(19, 2, 'ui.TestCases')
+data.setCell(19, 3, 71);
+window.suiteTableData['Patient_Suite']= { tableData: data, tableDiv: 'times-div-Patient_Suite'}
+return data;
+}
+              </script>
+              <span class="suite-total-time">Total running time: 1 minutes</span>
+              <div id="times-div-Patient_Suite">
+              </div> <!-- times-div-Patient_Suite -->
+            </div> <!-- times-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="reporter-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Reporter output for Patient Suite</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="ignored-methods-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">23 ignored methods</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="ignored-class-div">
+              <span class="ignored-class-name">ui.TestCases</span>
+              <div class="ignored-methods-div">
+                <span class="ignored-method-name">checkDeleteContent</span>
+                <br/>
+                <span class="ignored-method-name">checkEditContent</span>
+                <br/>
+                <span class="ignored-method-name">checkDetailsContentWithVaccCentre</span>
+                <br/>
+                <span class="ignored-method-name">checkAdminTab</span>
+                <br/>
+                <span class="ignored-method-name">checkEditInformationWithValidationDiffInputNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">checkEditScheduleWithValidationNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">checkEditInformationWithFilledPositiveCase</span>
+                <br/>
+                <span class="ignored-method-name">checkPatientTabContent</span>
+                <br/>
+                <span class="ignored-method-name">checkAddPatientPatternValidationNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">addPatientPositiveCase</span>
+                <br/>
+                <span class="ignored-method-name">checkSessionAdmin</span>
+                <br/>
+                <span class="ignored-method-name">checkEditInfomationWithValidationEmptyNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">checkAddPatientClickable</span>
+                <br/>
+                <span class="ignored-method-name">checkAdminPagePositiveCase</span>
+                <br/>
+                <span class="ignored-method-name">checkDetailsIconClickable</span>
+                <br/>
+                <span class="ignored-method-name">checkAddPatientWithEmptyFieldNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">checkAdminPageNegativeCase</span>
+                <br/>
+                <span class="ignored-method-name">checkDeleteIconClickable</span>
+                <br/>
+                <span class="ignored-method-name">checkDelete</span>
+                <br/>
+                <span class="ignored-method-name">checkAddPatientContent</span>
+                <br/>
+                <span class="ignored-method-name">checkEditIconeClickable</span>
+                <br/>
+                <span class="ignored-method-name">checkEditSchedulePositiveCase</span>
+                <br/>
+                <span class="ignored-method-name">addPatientExistingPatientNegativeCase</span>
+                <br/>
+              </div> <!-- ignored-methods-div -->
+            </div> <!-- ignored-class-div -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+        <div panel-name="chronological-Patient_Suite" class="panel">
+          <div class="main-panel-header rounded-window-top">
+            <span class="header-content">Methods in chronological order</span>
+          </div> <!-- main-panel-header rounded-window-top -->
+          <div class="main-panel-content rounded-window-bottom">
+            <div class="chronological-class">
+              <div class="chronological-class-name">ui.TestCases</div> <!-- chronological-class-name -->
+              <div class="configuration-suite before">
+                <span class="method-name">beforeTestForPatient</span>
+                <span class="method-start">0 ms</span>
+              </div> <!-- configuration-suite before -->
+              <div class="configuration-test before">
+                <span class="method-name">initialize</span>
+                <span class="method-start">10 ms</span>
+              </div> <!-- configuration-test before -->
+              <div class="test-method">
+                <span class="method-name">checkSessionPatient</span>
+                <span class="method-start">4797 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">5973 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkPatientPagePositiveCase</span>
+                <span class="method-start">6992 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">8068 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkPatientPageNegativeCase</span>
+                <span class="method-start">9069 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">9141 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkPersonalInformationPagePositiveCase</span>
+                <span class="method-start">10141 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">12353 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkPersonalInformationPageNegativeCase</span>
+                <span class="method-start">13358 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">15525 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientModalContentPositiveCase</span>
+                <span class="method-start">16531 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">21187 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientModalContentNegativeCase</span>
+                <span class="method-start">22193 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">25721 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientClickable</span>
+                <span class="method-start">26725 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">28943 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientInfomationPatternValidation</span>
+                <span class="method-start">29952 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">34844 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase</span>
+                <span class="method-start">35851 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">44432 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditPatientSaveChangePositiveCase</span>
+                <span class="method-start">45440 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">52900 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkNavigateToBookPage</span>
+                <span class="method-start">53903 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">56050 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkBookPageContent</span>
+                <span class="method-start">57056 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">61311 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkSubmitBookSlotNegativeCase</span>
+                <span class="method-start">62317 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">66193 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkSubmitBookSlotPositiveCase</span>
+                <span class="method-start">67206 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">74877 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkSubmitBookSlotWithValidationNegativeCase</span>
+                <span class="method-start">75891 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">85729 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkViewVaccinationContent</span>
+                <span class="method-start">86730 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">90224 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditScheduleContent</span>
+                <span class="method-start">91238 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">94217 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditModalPositiveCase</span>
+                <span class="method-start">95230 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">103104 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="test-method">
+                <span class="method-name">checkEditModalWithValidationNegativeCase</span>
+                <span class="method-start">104114 ms</span>
+              </div> <!-- test-method -->
+              <div class="configuration-method after">
+                <span class="method-name">afterEachTest</span>
+                <span class="method-start">112100 ms</span>
+              </div> <!-- configuration-method after -->
+              <div class="configuration-test after">
+                <span class="method-name">end</span>
+                <span class="method-start">113115 ms</span>
+              </div> <!-- configuration-test after -->
+          </div> <!-- main-panel-content rounded-window-bottom -->
+        </div> <!-- panel -->
+      </div> <!-- main-panel-root -->
+    </div> <!-- wrapper -->
+  </body>
+<script type="text/javascript" src="testng-reports2.js"></script>
+</html>

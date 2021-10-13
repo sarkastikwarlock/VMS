@@ -1,0 +1,158 @@
+<!--registrationForm modal-->
+<div id="registerModal" class="flexbox show card register" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+    <div class="flexbox-content">
+        <div class="flexbox-header"><br>
+            <h1 class="text-center">Registration Form</h1><br>
+        </div>
+        <div class="flexbox-body">
+            <form class="form col-md-12 center-block">
+              <div class="form-group" [class.has-error]="registerType.touched && registerType.invalid">
+                <label class="control-label">Register as: </label><br>
+                <select class="form-control" [(ngModel)]="registerAsA" (ngModelChange)="getRegisterType(); ngOnInit();" name="registerType" id="registerType" #registerType="ngModel" required>
+                    <option [ngValue]="null" disabled>--Select an option--</option>
+                    <option [value]="regis" *ngFor="let regis of registerList">{{regis}}</option>
+                </select>
+                <small *ngIf="registerType.touched && registerType.invalid">&nbsp;Please select the registration type.</small>
+            </div>
+              <div class="form-group">
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputFullname.invalid && inputFullname.touched||nameIsFilled && isClicked && !inputFullname.touched">
+                    <label class="control-label">Fullname: </label><br>
+                    <input type="text" id="inputFullname" class="form-control input-lg" name="fullname" placeholder="Fullname" [required]="isADoctor || isAPatient" #inputFullname="ngModel" [(ngModel)]="fullname" pattern="^[a-zA-Z \']+$" [disabled]="!registerType?.valid" (ngModelChange)="checkNameIsFilled(fullname)">
+                    <small *ngIf="inputFullname.errors?.required && inputFullname.touched||nameIsFilled && isClicked && !inputFullname.touched">&nbsp;Name is required.</small>
+                    <small *ngIf="inputFullname.errors?.pattern && inputFullname.touched">&nbsp;Name may only contain alphabets.</small>
+                </div>
+
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputEmail.invalid && inputEmail.touched||emailIsFilled && isClicked && !inputEmail.touched">
+                    <label class="control-label">E-mail:</label>
+                    <input type="email" class="form-control input-lg" id="inputEmamil" #inputEmail="ngModel" name="inputEmail" placeholder="E-mail" [required]="isADoctor || isAPatient" [(ngModel)]="email" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" [disabled]="!registerType?.valid" (ngModelChange)="checkEmailIsFilled(email)">
+                    <small *ngIf="inputEmail.errors?.required && inputEmail.touched||emailIsFilled && isClicked && !inputEmail.touched">E-mail is required.</small>
+                    <small *ngIf="inputEmail.errors?.pattern && inputEmail.touched">Please enter the proper e-mail format. Eg.john.doe@gmail.com</small>
+                </div>
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputPassword.invalid && inputPassword.touched||passwordIsFilled && isClicked && !inputPassword.touched">
+                    <label class="control-label">Password:</label>
+                    <input type="password" class="form-control input-lg" name="inputPassword" id="inputPassword" #inputPassword="ngModel" placeholder="Password" [required]="isADoctor || isAPatient" [(ngModel)]="password" pattern="^([a-zA-Z0-9!@#$%^&*]){8,}$" [disabled]="!registerType?.valid" (ngModelChange)="checkPasswordIsFilled(password)">
+                    <small *ngIf="inputPassword.errors?.required && inputPassword.touched||passwordIsFilled && isClicked&& !inputPassword.touched">Password is required.</small>
+                    <small *ngIf="inputPassword.errors?.pattern && inputPassword.touched">Password have to be at least 8 characters long.</small>
+                </div>
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputReType.invalid && inputReType.touched ||retypeIsFilled && isClicked && !inputReType.touched">
+                    <label class="control-label">Re-Type Password:</label>
+                    <input type="password" class="form-control input-lg" id="inputReType" #inputReType="ngModel" name="reTypePassword"placeholder="Re-Type Password" [required]="isADoctor || isAPatient" [(ngModel)]="reTypePassword" [pattern]="this.password" [disabled]="!registerType?.valid" (ngModelChange)="checkRetypeIsFilled(reTypePassword);">
+                    <small *ngIf="inputReType.errors?.required && inputReType.touched||retypeIsFilled && isClicked && !inputReType.touched">Please enter the password.</small>
+                    <small *ngIf="inputReType.errors?.pattern && inputReType.touched">Password is not matching. Please re-enter the password.</small>
+                </div>
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputId.invalid && inputId.touched||idIsFilled && isClicked &&!inputId.touched">
+                    <label class="control-label">NRIC:</label>
+                    <input type="text" class="form-control input-lg" id="inputId" #inputId="ngModel" name="inputId" placeholder="NRIC" [required]="isADoctor || isAPatient" [(ngModel)]="id" pattern="^[STFGstfg]\d{7}[a-zA-Z]$" [disabled]="!registerType?.valid" (ngModelChange)="checkIdIsFilled(id)">
+                    <small *ngIf="inputId.errors?.required && inputId.touched||idIsFilled && isClicked &&!inputId.touched">NRIC is required.</small>
+                    <small *ngIf="inputId.errors?.pattern && inputId.touched">NRIC should start with either S,T,F,G contains 7 digits in between and ends with an alphabet.</small>
+                </div>
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputDOB.invalid && inputDOB.touched || this.timeDiff<12 && inputDOB.touched||dobIsFilled && isClicked &&!inputDOB.touched">
+                    <label class="control-label">Date of birth:</label>
+                    <input type="date" [max]="maxDate" class="form-control input-lg" id="inputDOB" #inputDOB="ngModel" name="inputDOB"  placeholder="yyyy-MM-dd" [required]="isADoctor || isAPatient" [(ngModel)]="dob" (change)="ageValidationForInput(dob)" [disabled]="!registerType?.valid" (ngModelChange)="checkDobIsFilled(dob)">
+                    <small *ngIf="inputDOB.errors?.required && inputDOB.touched||dobIsFilled && isClicked &&!inputDOB.touched">Date of birth is required.</small>
+                    <small *ngIf="this.timeDiff<12 && inputDOB.touched">You have to be at least 12 year old to register for a vaccine.</small>
+                </div>
+                <div class="form-group" *ngIf="isADoctor || isAPatient" [class.has-error]="inputPhone.invalid && inputPhone.touched||phoneIsFilled && isClicked && !inputPhone.touched">
+                    <label class="control-label">Phone Number:</label>
+                    <input type="text" class="form-control input-lg" id="inputPhone" #inputPhone="ngModel" name="inputPhone" placeholder="Phone Number" [required]="isADoctor || isAPatient" [(ngModel)]="phone" pattern="^[896]\d{7}$" [disabled]="!registerType?.valid" (ngModelChange)="checkPhoneIsFilled(phone)">
+                    <small *ngIf="inputPhone.errors?.required && inputPhone.touched||phoneIsFilled && isClicked && !inputPhone.touched">Phone is required.</small>
+                    <small *ngIf="inputPhone.errors?.pattern && inputPhone.touched">Phone number should be 8 digits long and start with either 8, 9 or 6 (for landline).</small>
+                </div>
+            </div>
+
+            <div class="form-group" [hidden]="!isADoctor">
+                <div class="form-group" [class.has-error]="doctorPractice.invalid && doctorPractice.touched||docFieldIsFilled && isClicked && !doctorPractice.touched">
+                    <label class="control-label">Medical Field:</label>                
+                    <select class="form-control" [(ngModel)]="doctorField" name="doctorPractice" id="doctorPractice" #doctorPractice="ngModel" class="form-control" [required]="isADoctor" [disabled]="!registerType?.valid" (ngModelChange)="checkDocFieldIsFilled(doctorField)">
+                        <option [ngValue]="null" disabled>--Select an option--</option>
+                        <option [ngValue]="field" *ngFor="let field of medicalField">{{field}}</option>
+                    </select>
+                    <small *ngIf="doctorPractice.errors?.required && doctorPractice.touched||docFieldIsFilled && isClicked && !doctorPractice.touched">Please select the medical field you are practicing.</small>
+                </div>
+                
+
+                <div class="form-group" [class.has-error]="accreditation.invalid && accreditation.touched||docAccIsFilled && isClicked && !accreditation.touched">
+                    <label class="control-label">Medical Accreditation:</label>
+                    <input type="" class="form-control input-lg" id="accreditation" #accreditation="ngModel" name="inputAccreditation" placeholder="Eg.XX-XXXXXXXXX" [required]="isADoctor" [(ngModel)]="doctorAccreditation" pattern="^[a-zA-Z0-9]{2}-[a-zA-Z0-9]{7}$" [disabled]="!registerType?.valid" (ngModelChange)="checkDocAccIsFilled(doctorAccreditation)"> 
+                    <small *ngIf="accreditation.errors?.required && accreditation.touched||docAccIsFilled && isClicked && !accreditation.touched">Medical Accreditation is required.</small>
+                    <small *ngIf="accreditation.errors?.pattern && accreditation.touched">Medical Accreditation should consist of only alphanumeric characters.\nEg.aZ-97uI64H</small>
+                </div>
+                <div class="vaccineCheckbox">
+                    <label for="Gp" class="form-control input-lg">
+                        Is a Gp?
+                        <input type="checkbox" id="Gp" name="Gp" value="true" [(ngModel)]="isAGp" [disabled]="!registerType?.valid">
+                    </label>
+                </div><br>
+            </div>
+            
+            <div class="form-group" [hidden]="!isACentre">
+                  <div class="form-group" [class.has-error]="inputCName.invalid && inputCName.touched||cNameIsFilled && isClicked && !inputCName.touched">
+                    <label class="control-label">Centre's Name: </label><br>
+                    <input type="text" class="form-control input-lg" id="inputCName" #inputCName="ngModel" name="inputCName" placeholder="Centre's Fullname" [required]="isACentre" [(ngModel)]="centreName" [disabled]="!registerType?.valid" (ngModelChange)="checkCNameIsFilled(centreName)">
+                    <small *ngIf="inputCName.invalid && inputCName.touched||cNameIsFilled && isClicked && !inputCName.touched">Name of the Vaccination centre is required.</small>
+                </div>
+                  <div class="form-group" [class.has-error]="inputCEmail.invalid && inputCEmail.touched||cEmailIsFilled && isClicked && !inputCEmail.touched">
+                    <label class="control-label">Centre's E-mail:</label>
+                    <input type="email" class="form-control input-lg" id="inputCEmail" #inputCEmail="ngModel" name="inputCEmail" placeholder="Centre's E-mail" [required]="isACentre" [(ngModel)]="centreEmail" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" [disabled]="!registerType?.valid" (ngModelChange)="checkCEmailIsFilled(centreEmail)">
+                    <small *ngIf="inputCEmail.errors?.required && inputCEmail.touched||cEmailIsFilled && isClicked  && !inputCEmail.touched">E-mail for the vaccination centre is required.</small>
+                    <small *ngIf="inputCEmail.errors?.pattern && inputCEmail.touched">Please enter the proper email format. Eg.john.doe@gmail.com</small>
+                </div>
+                  <div class="form-group" [class.has-error]="inputCAddress.invalid && inputCAddress.touched||cAddressIsFilled && isClicked && !inputCAddress.touched">
+                    <label class="control-label">Centre's Address:</label>
+                    <textarea id="centreAddressText" class="form-control input-lg" id="inputCAddress" #inputCAddress="ngModel" name="inputCAddress" placeholder="Centre's Address..." rows="4" [required]="isACentre" [(ngModel)]="centreAddress" pattern="^[a-zA-Z0-9!@#$%^&\/*]{5,}$" [disabled]="!registerType?.valid" (ngModelChange)="checkCAddressIsFilled(centreAddress)"></textarea>
+                    <small *ngIf="inputCAddress.errors?.required && inputCAddress.touched||cAddressIsFilled && isClicked && !inputCAddress.touched">Address for the vaccination centre is required.</small>
+                    <small *ngIf="inputCAddress.errors?.pattern && inputCAddress.touched">Please enter a proper address. Or at least enter the postalcode.</small>
+                </div>
+                  <div class="form-group" [class.has-error]="inputCPhone.invalid && inputCPhone.touched||cPhoneIsFilled && isClicked && !inputCPhone.touched">
+                    <label class="control-label">Centre's Phone:</label>
+                    <input type="text" class="form-control input-lg" id="inputCPhone" #inputCPhone="ngModel" name="inputCPhone" placeholder="Centre's Phone" [required]="isACentre" [(ngModel)]="centrePhone" pattern="^[896]\d{7}$" [disabled]="!registerType?.valid" (ngModelChange)="checkCPhoneIsFilled(centrePhone)">
+                    <small *ngIf="inputCPhone.errors?.required && inputCPhone.touched||cPhoneIsFilled && isClicked && !inputCPhone.touched">Phone for vaccination centre is required.</small>
+                    <small *ngIf="inputCPhone.errors?.pattern && inputCPhone.touched">Phone number should be 8 digits long and start with either 8, 9 or 6 (for landline).</small>
+                </div>
+                  <div class="form-group" [class.has-error]="closingTime.invalid && closingTime.touched || openingTime.invalid && openingTime.touched||cOpeningIsFilled && isClicked &&cClosingIsFilled &&!openingTime.touched &&!closingTime.touched">
+                    <label class="control-label">Centre's Hours:</label>
+                    <div style="display:flex;" [class.has-error]="closingTime.invalid && closingTime.touched || openingTime.invalid && openingTime.touched||!cOpeningIsFilled && isClicked&&!cClosingIsFilled">
+                        <input type="time" class="form-control input-lg" name="inputCOpening" id="openingTime" #openingTime="ngModel" [required]="isACentre" [(ngModel)]="centreOpening" [disabled]="!registerType?.valid" (ngModelChange)="checkCOpeningIsFilled(centreOpening)">
+                        <input type="time" class="form-control input-lg" name="inputCClosing" id="closingTime" #closingTime="ngModel" [required]="isACentre" [(ngModel)]="centreClosing" [disabled]="!registerType?.valid" (ngModelChange)="checkCClosingIsFilled(centreClosing)">
+                    </div>
+                    <small *ngIf="openingTime.invalid && openingTime.touched || closingTime.invalid && closingTime.touched||cOpeningIsFilled && isClicked &&cClosingIsFilled &&!openingTime.touched &&!closingTime.touched">Vaccination centre operation hours (Opening & Closing) is required.</small>
+                  </div>
+                  <div class="form-group" [class.has-error]="moderna.invalid && moderna.touched || pfizer.invalid && pfizer.touched || comirnaty.touched && comirnaty.invalid||cVaccIsFilled && isClicked&&(!moderna.touched||!pfizer.touched||!comirnaty.touched)">
+                    <label class="control-label">Centre's Vaccine Type:</label>
+                    <div class="vaccineCheckbox">
+                        <label for="moderna" class="form-control input-lg control-label">
+                            <input type="checkbox" id="moderna" name="moderna" #moderna="ngModel" value="Moderna" [(ngModel)]="checkModerna" [disabled]="!registerType?.valid" (ngModelChange)="populateVacc(); checkCVaccIsFilled(centre.centreVaccine);">
+                            Moderna
+                        </label>
+                    </div><br>
+                    <div class="vaccineCheckbox">
+                        <label for="pfizer"  class="form-control input-lg control-label">
+                            <input type="checkbox" id="pfizer" name="pfizer" #pfizer="ngModel" value="Pfizer" [(ngModel)]="checkPfizer" [disabled]="!registerType?.valid" (ngModelChange)="populateVacc(); checkCVaccIsFilled(centre.centreVaccine);">
+                            Pfizer
+                        </label>
+                    </div><br>
+                    <div class="vaccineCheckbox">
+                        <label for="comirnaty"  class="form-control input-lg control-label">
+                            <input type="checkbox" id="comirnaty" name="comirnaty" #comirnaty="ngModel" value="Comirnaty" [(ngModel)]="checkComirnaty" [disabled]="!registerType?.valid" (ngModelChange)="populateVacc(); checkCVaccIsFilled(centre.centreVaccine);">
+                            Comirnaty
+                        </label>
+                    </div>
+                    <small *ngIf="moderna.invalid && moderna.touched || pfizer.invalid && pfizer.touched || comirnaty.invalid && comirnaty.touched||cVaccIsFilled && isClicked&&(!moderna.touched||!pfizer.touched||!comirnaty.touched)">Please select at least 1 vaccine.</small>
+                  </div>
+            </div>
+              <div class="form-group">
+                  <div class="btnGroup">  
+                    <button type="submit" class="btn btn-primary btn-lg btn-block submitBtn" (click)="submitByType()"  [disabled]="!registerType?.valid">Submit</button>
+                    <button type="reset" class="btn btn-primary btn-lg btn-block cancelBtn" (click)="cancelRegistration()">Cancel</button>
+                  </div><br>
+              </div>
+            </form>
+        </div>
+        <div class="flexbox-footer">
+            <div class="col-md-1accordion2">
+            </div>	
+        </div>
+    </div>
+    </div>
+  </div>

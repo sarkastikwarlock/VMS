@@ -1,0 +1,458 @@
+<!--doctorPage modal-->
+<div id="doctorPageModal" class="flexbox show card doctorPage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+        <div class="flexbox-content">
+            <div class="flexbox-header"><br>
+                <h2 class="text-center">Doctor Page</h2><br>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div style="display: inline-flex;"><small>Session: {{doctor?.doctorFullname}} ({{doctor?.doctorId}})</small><logout></logout></div>
+                        <br>
+                        <div class="tab">
+                            <button [class.active]="viewMode=='Doctor'" (click)="viewMode='Doctor'">As Doctor</button>
+                            <button [class.active]="viewMode=='Patient'" (click)="viewMode='Patient'" [disabled]="!isAlsoPatient">As Patient</button>
+                        </div>
+                        <div class="form-group" [ngSwitch]="viewMode">  
+                            <div class="tabcontent" *ngSwitchCase="'Doctor'">
+                                <br>
+                                <div class="innerTab">
+                                    <div style="display: inline-flex; padding-bottom: 3px;">
+                                        <button [class.active]="innerDoctorViewMode=='Information'" (click)="innerDoctorViewMode='Information'">Personal Information</button>
+                                        <button [class.active]="innerDoctorViewMode=='Schedule'" (click)="innerDoctorViewMode='Schedule'" [disabled]="!doctor?.isQualified">Doctor Schedule</button>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngSwitch]="innerDoctorViewMode">
+                                    <div class="tabcontent" *ngSwitchCase="'Information'">
+                                        <div style="width: 60%; margin: auto;">
+                                            <div class="form-group">
+                                                <form class="form col-md-12 center-block">
+                                                    <div class="form-group">
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left;"><label>Fullname: </label><span> {{doctor?.doctorFullname}}</span></div>
+                                                            <div style="float: right;"><label>NRIC:</label><span> {{doctor?.doctorId}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left; clear: both;"><label>E-mail: </label><span> {{doctor?.doctorEmail}}</span></div>
+                                                            <div style="float: right;"><label>Phone:</label><span> {{doctor?.doctorPhone}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left; clear: both;"><label>Date of Birth:</label><span> {{doctor?.doctorDOB}}</span></div>
+                                                            <div style="float: right;"><label>Status:</label><span> {{doctor?.isQualified}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="clear:both"><label>Medical Field:</label><span> {{doctor?.doctorField}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left; clear: both;"><label>Medical Accreditation:</label><span> {{doctor?.doctorAccreditation}}</span></div>
+                                                            <div class="form-group" style="float: right; position: relative; top: -5.5px">
+                                                                <button class="table-link text-info iconBtn" (click)="onOpenModal(doctor, editDoctorModal)">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div><br>    
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tabcontent" *ngSwitchCase="'Schedule'">
+                                        <div style="width: 70%; margin: auto;">
+                                            <div class="form-group">
+                                                <form class="form col-md-12 center-block">
+                                                    <div class="form-group">
+                                                        <div class="form-group" style="text-align: center;" [hidden]="!(!this.doctor.doctorFirstCentre && !this.doctor.doctorSecondCentre && !this.doctor.doctorThirdCentre)">
+                                                            <label>Please book at least 1 vaccination schedule.</label><br>
+                                                            <button type="button" class="btn btn-primary" (click)="onOpenModal(doctor, editDoctorScheduleModal)">Book a schedule</button>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;" [hidden]="!this.doctor.doctorFirstCentre">
+                                                            <div style="float: left;"><label>First Vaccination Centre: </label><span> {{doctor?.doctorFirstCentre}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;" [hidden]="!this.doctor.doctorFirstCentre">
+                                                            <div style="float: left; clear: both;"><label>First Vaccination Timing:&nbsp;</label><span>{{firstDate}} , {{doctor?.doctorFirstTime}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;" [hidden]="!this.doctor.doctorSecondCentre">
+                                                            <div style="float: left;"><label>Second Vaccination Centre: </label><span> {{doctor?.doctorSecondCentre}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;" [hidden]="!this.doctor.doctorSecondCentre">
+                                                            <div style="float: left; clear: both;"><label>Second Vaccination Timing:&nbsp;</label><span>{{secondDate}} , {{doctor?.doctorSecondTime}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;" [hidden]="!this.doctor.doctorThirdCentre">
+                                                            <div style="float: left; clear: both;"><label>Third Vaccination Centre:</label><span> {{doctor?.doctorThirdCentre}}</span></div>
+                                                        </div>
+                                                        
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float:left; clear: both;" [hidden]="!this.doctor.doctorThirdCentre"><label>Third Vaccination Timing:&nbsp;</label><span>{{thirdDate}} , {{doctor?.doctorThirdTime}}</span></div>
+                                                            <div class="form-group" style="float: right; position: relative; top: -5.5px" [hidden]="!this.doctor.doctorFirstCentre && !this.doctor.doctorSecondCentre && !this.doctor.doctorThirdCentre">
+                                                                <button class="table-link text-info iconBtn" (click)="onOpenModal(doctor, editDoctorScheduleModal)">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <br>    
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>        
+                            </div>
+                            <div class="tabcontent" *ngSwitchCase="'Patient'">
+                                <br>
+                                <div class="innerTab">
+                                    <div style="display: inline-flex; padding-bottom: 3px;">
+                                        <button [class.active]="innerPatientViewMode=='Information'" (click)="innerPatientViewMode='Information'">Personal Information</button>
+                                        <button [class.active]="innerPatientViewMode=='BookSlot'" (click)="innerPatientViewMode='BookSlot'">Book a Slot</button>
+                                        <button [class.active]="innerPatientViewMode=='Schedule'" (click)="innerPatientViewMode='Schedule'">Vaccination Schedule</button>
+                                    </div>
+                                </div>
+                                <div class="form-group" [ngSwitch]="innerPatientViewMode">
+                                    <div class="tabcontent" *ngSwitchCase="'Information'">
+                                        <div style="width: 60%; margin: auto;">
+                                            <div class="form-group">
+                                                <form class="form col-md-12 center-block">
+                                                    <div class="form-group">
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left;"><label>Fullname: </label><span> {{patient?.patientFullname}}</span></div>
+                                                            <div style="float: right;"><label>NRIC:</label><span> {{patient?.patientId}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style="float: left; clear: both;"><label>E-mail: </label><span> {{patient?.patientEmail}}</span></div>
+                                                            <div style="float: right;"><label>Phone:</label><span> {{patient?.patientPhone}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;">
+                                                            <div style=" float: left; clear: both;"><label>Date of Birth:</label><span> {{patient?.patientDOB}}</span></div>
+                                                            <div class="form-group" style="float: right; position: relative; top: -5.5px">
+                                                                <button class="table-link text-info iconBtn" (click)="onOpenModal(patient, editPatientModal)">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <br>
+
+                                                    </div>
+
+                                                </form>
+                                            </div>
+                                        </div>  
+                                    </div>
+                                    <div class="tabcontent" *ngSwitchCase="'BookSlot'">
+                                        <book-vaccine-slot [inputData]="this.patient"></book-vaccine-slot>
+                                    </div>
+                                    <div class="tabcontent" *ngSwitchCase="'Schedule'">
+                                        <div style="width: 70%; margin: auto;">
+                                            <div class="form-group">
+                                                <form class="form col-md-12 center-block">
+                                                    <div class="form-group">
+                                                        <div class="form-group" style="text-align:center;" [hidden]="!(!this.patient.patientFirstCentre&&!this.patient.patientSecondCentre)">
+                                                            Please book a vaccination slot.
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div style="float: left;"[hidden]="!this.patient.patientFirstCentre"><label>First Vaccination Centre: </label><span> {{patient?.patientFirstCentre}}</span></div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div style="float: left; clear: both;"[hidden]="!this.patient.patientFirstCentre"><label>First Date & Time: </label><span> {{patient?.patientFirstDate}}, {{patient?.patientFirstTime|date:'HH:mm'}}</span></div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div style="float: left;"[hidden]="!this.patient.patientSecondCentre"><label>Second Vaccination Centre:</label><span> {{patient?.patientSecondCentre}}</span></div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <div style="float: left;"[hidden]="!this.patient.patientSecondCentre"><label>Second Second Date & Time:</label><span> {{patient?.patientSecondDate}}, {{patient?.patientSecondTime|date:'HH:mm'}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;"[hidden]="!this.patient.patientFirstCentre">
+                                                            <div style="float: left; clear: both;"><label>First Dose:</label><span> {{patient?.firstDoseIsDone}}</span></div>
+                                                        </div>
+                                                        <div class="form-group" style="display: inline;"[hidden]="!this.patient.patientSecondCentre">
+                                                            <div style="float:left; clear: both;"><label>Second Dose:</label><span> {{patient?.secondDoseIsDone}}</span></div>
+                                                            <div class="form-group" style="float: right; position: relative; top: -5.5px">
+                                                                <button class="table-link text-info iconBtn" (click)="onOpenModal(patient, editPatientScheduleModal)">
+                                                                    <span class="fa-stack">
+                                                                        <i class="fa fa-square fa-stack-2x"></i>
+                                                                        <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                                    </span>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                        <br>    
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>         
+                            </div>   
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="flexbox-footer">
+                <div class="col-md-1accordion2"></div>	
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--editDoctorModal-->
+<ng-template class="modal fade" #editDoctorModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" name="doctorFullname" placeholder="Fullname" [(ngModel)]="objectData.doctorFullname">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="email" class="form-control input-lg" name="doctorEmail" placeholder="Email" [(ngModel)]="objectData.doctorEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" class="form-control input-lg" name="doctorPassword" placeholder="Password" [(ngModel)]="objectData.doctorPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" name="doctorReTypePassword" placeholder="Re-Type Password" [(ngModel)]="reTypeDoctorPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>NRIC:</label>
+                                <input type="text" class="form-control input-lg" name="doctorId" placeholder="NRIC" [(ngModel)]="objectData.doctorId">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of birth:</label>
+                                <input type="date" class="form-control input-lg" name="doctorDOB" placeholder="Date of Birth" [(ngModel)]="objectData.doctorDOB">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                <input type="text" class="form-control input-lg" name="doctorPhone" placeholder="Phone Number" [(ngModel)]="objectData.doctorPhone">
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Field:</label>
+                                <select name="doctorField" id="medicalField" class="form-control" [(ngModel)]="objectData.doctorField">
+                                    <option value="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="field" *ngFor="let field of medicalField">{{field}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Accredition:</label>
+                                <input type="text" name="doctorAccreditation" class="form-control input-lg" placeholder="Medical Accredition" [(ngModel)]="objectData.doctorAccreditation">
+                            </div>
+                            <div class="vaccineCheckbox">
+                                <label for="Gp" class="form-control input-lg">
+                                    Is a Gp?
+                                    <input type="checkbox" id="Gp" name="Gp" value="true" [(ngModel)]="objectData.isAGp">
+                                </label>
+                            </div><br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updateDoctor()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--editDoctorScheduleModal-->
+<ng-template class="modal fade" #editDoctorScheduleModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Doctor Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <br>
+                            <div class="form-group">
+                                <label>First Vaccination Centre:</label>
+                                <select [(ngModel)]="firstCentreDoctor" name="bookFirstCentre" id="bookFirstCentre" class="form-control">
+                                    <option [ngValue]="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="centre" *ngFor="let centre of centres | sortPipe">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="FirstDate" placeholder="dd/mm/yyyy" [(ngModel)]="firstDate">
+                            </div>
+                            <label>First Vaccination Schedule:</label>
+                            <div class="form-group">
+                                <div style="display: flex;">
+                                    <input type="time" class="form-control input-lg" name="doctorFirstTimeStart" [(ngModel)]="firstTimeStart">
+                                    <input type="time" class="form-control input-lg" name="doctorFirstTimeEnd" [(ngModel)]="firstTimeEnd">  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Centre:</label>
+                                <select [(ngModel)]="secondCentreDoctor" name="bookSecondCentre" id="bookSecondCentre" class="form-control">
+                                    <option [ngValue]="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="centre" *ngFor="let centre of centres | sortPipe">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="secondDate" placeholder="dd/mm/yyyy" [(ngModel)]="secondDate">
+                            </div>
+                            <label>Second Vaccination Schedule:</label>
+                            <div class="form-group">
+                                <div style="display: flex;">
+                                    <input type="time" class="form-control input-lg" name="doctorSecondTimeStart" [(ngModel)]="secondTimeStart">
+                                    <input type="time" class="form-control input-lg" name="doctorSecondTimeEnd" [(ngModel)]="secondTimeEnd">  
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Third Vaccination Centre:</label>
+                                <select [(ngModel)]="thirdCentreDoctor" name="bookThirdCentre" id="bookThirdCentre" class="form-control">
+                                    <option [ngValue]="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="centre" *ngFor="let centre of centres | sortPipe">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Third Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="thirdDate" placeholder="dd/mm/yyyy" [(ngModel)]="thirdDate">
+                            </div>
+                            <label>Third Vaccination Schedule</label>
+                            <div class="form-group">
+                                <div style="display: flex;">
+                                    <input type="time" class="form-control input-lg" name="doctorThirdTimeStart" [(ngModel)]="thirdTimeStart">
+                                    <input type="time" class="form-control input-lg" name="doctorThirdTimeEnd" [(ngModel)]="thirdTimeEnd">  
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updateSchedule()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--EditPatient Modal-->
+<ng-template class="modal fade" #editPatientModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" name="patientFullname" placeholder="Fullname" [(ngModel)]="objectData.patientFullname">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="email" class="form-control input-lg" name="patientEmail" placeholder="E-mail" [(ngModel)]="objectData.patientEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" class="form-control input-lg" name="patientPassword" placeholder="Password" [(ngModel)]="objectData.patientPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" name="patientReTypePassword" placeholder="Re-Type Password" [(ngModel)]="reTypePatientPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>NRIC:</label>
+                                <input type="text" class="form-control input-lg" name="patientId" placeholder="NRIC" [(ngModel)]="objectData.patientId">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of birth:</label>
+                                <input type="date" class="form-control input-lg" name="patientDOB" placeholder="dd/mmm/yyyy">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                <input type="text" class="form-control input-lg" name="patientPhone" placeholder="Phone Number" [(ngModel)]="objectData.patientPhone">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updatePatient()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (close)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--editPatientScheduleModal-->
+<ng-template class="modal fade" #editPatientScheduleModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Patient Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <br>
+                            <div class="form-group">
+                                <label>First Vaccination Centre:</label>
+                                <select [(ngModel)]="firstCentrePatient" name="bookFirstCentre" id="bookFirstCentre" class="form-control">
+                                    <option [ngValue]="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Schedule:</label>
+                                <input type="text" class="form-control input-lg" name="patientFirstDose" placeholder="First Vaccination Timing" [(ngModel)]="firstSchedule">
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Centre:</label>
+                                <select [(ngModel)]="secondCentrePatient" name="bookSecondCentre" id="bookSecondCentre" class="form-control">
+                                    <option [ngValue]="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Schedule:</label>
+                                <input type="text" class="form-control input-lg" name="patientSecondDose" placeholder="Second Vaccination Timing" [(ngModel)]="secondSchedule">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updatePatientSchedule()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

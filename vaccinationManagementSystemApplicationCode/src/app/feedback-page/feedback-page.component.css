@@ -1,0 +1,81 @@
+.feedbackPage{
+    width: 60%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+.ratingsBtn{
+    margin:auto;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+.ratingsBtn input[type=radio]{
+    display: none;
+}
+
+.ratingsBtn input[type=radio]:checked + .bi {
+    color: #38EE6E
+}
+
+.ratingsBtn{
+    margin:auto;
+    background-color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.feedbackIcon{
+    display: flex;
+    width: 80%;
+    margin: auto;
+}
+
+small{
+    display: block;
+    text-align: center;
+}
+
+.bi{
+    display: block;
+    text-align: center;
+}
+
+.radioBtn{
+    display:none;
+}
+
+.typeBtn{
+    display: flex;
+    text-align: center;
+    cursor:pointer;
+}
+
+.typeChoice{
+    background-color: white; /* Green */
+    border: 1px solid#B8BDBA;
+    border-radius: 3px;
+    color: #282A28;
+    padding: 10px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 2px;
+    cursor: pointer;
+}
+
+#compliment:checked ~ label .contentDiv1{
+    color: #38EE6E;
+    border-color: #38EE6E
+}
+
+#suggestion:checked ~ label .contentDiv2{
+    color: #38EE6E;
+    border-color: #38EE6E
+}
+
+#complain:checked ~ label .contentDiv3{
+    color: #38EE6E;
+    border-color: #38EE6E
+}

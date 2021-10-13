@@ -1,0 +1,59 @@
+<!--bookVaccination modal-->
+<div id="bookVaccinationModal" class="flexbox show card bookVaccination" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+    <div class="flexbox-content">
+        <div class="flexbox-header"><br>
+            <h3 class="text-center">Book a slot</h3><br>
+        </div>
+        <div class="flexbox-body">
+            <form class="form col-md-12 center-block">
+              <div class="form-group">
+                  <label class="control-label">First Dose Location:</label>
+                  <select [(ngModel)]="firstCentre" (ngModelChange)="onChange(); getVaccinationCentreSlots(); " name="bookFirstDose" id="bookFirstDose" #bookFirstDose="ngModel" class="form-control">
+                      <option [ngValue]="null" disabled >--Select an option--</option>
+                      <option [ngValue]="centre" *ngFor="let centre of centres | sortPipe">{{centre.centreName}}</option>
+                  </select>
+              </div>
+              <div class="form-group" [class.has-error]="dateValidationFailed">
+                <label for="firstDoseDate" class="control-label">Date:</label><br>
+                  <input type="date" [disabled]="!firstCentre" [min]="minDateFirst" name="firstDateBook" id="firstDateBook" #firstDateBook="ngModel" class="form-control input-lg" [(ngModel)]="firstDate" (ngModelChange)="onChange(); getVaccinationCentreSlots(); onChange2(); getVaccinationCentreSlots2(firstCentre);">
+                  <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+                </div>
+              <div [hidden]="!show">&nbsp;Please select a time slot.</div>
+              <div class="form-group row" *ngIf="show">
+                  <div class="form-control col-sm-4 col-4 vaccineSlotsTiming"  *ngFor="let slots of vaccineSlotTime"><input type="radio" value="{{slots}}" name="vaccineSlots" id="vaccineSlots" (click)="radioSelect($event)" ><label for="vaccineSlots"><div>&nbsp;{{slots| date: 'HH:mm'}}</div></label></div>
+                </div>
+
+              <div class="form-group">
+                <label>Second Dose Location:</label>
+                <select [disabled]="!firstCentre" [(ngModel)]="secondCentre" (ngModelChange)="onChange2();  getVaccinationCentreSlots2(secondCentre);" name="bookSecondDose" id="bookSecondDose" #bookSecondDose="ngModel" class="form-control" >
+                    <option [ngValue]="null" disabled>--Select an option--</option>
+                    <option [ngValue]="centre" *ngFor="let centre of centres | sortPipe">{{centre.centreName}}</option>
+                </select>
+                <small *ngIf="firstCentre!= secondCentre" class="has-error">*Note: Location for first and second vaccination is different.</small>
+            </div>
+            <div class="form-group" [class.has-error]="dateValidationFailed">
+                <label for="secondDoseDate" class="control-label">Date:</label><br>
+                <input type="date" [disabled]="!secondCentre||!firstDate" [min]="minDateSecond" name="secondDateBook" id="secondDateBook" #secondDateBook="ngModel" class="form-control input-lg" [(ngModel)]="secondDate" (ngModelChange)="onChange2(); getVaccinationCentreSlots2(secondCentre);">
+                <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+            </div>
+            <div [hidden]="!show2||!show">&nbsp;Please select a time slot.</div>
+            <div class="form-group row" *ngIf="show2">
+                <div class="form-control col-sm-4 col-4 vaccineSlotsTiming" *ngFor="let slots of vaccineSlotTime2"><input type="radio" value="{{slots}}" name="vaccineSlots2" id="vaccineSlots2" (click)="radioSelect2($event)" ><label for="vaccineSlots2"><div>&nbsp;{{slots| date: 'HH:mm'}}</div></label></div>
+            </div>
+              
+              <div class="form-group">
+                  <div class="btnGroup">  
+                    <button type="submit" class="btn btn-primary btn-lg btn-block submitBtn" (click)="onSubmit()" [disabled]="!(this.isRadioSelected2&&this.isRadioSelected)">Submit</button>
+                    <button type="reset" class="btn btn-primary btn-lg btn-block cancelBtn" [hidden]="this.inputData">Cancel</button>
+                  </div><br>
+              </div>
+            </form>
+        </div>
+        <div class="flexbox-footer">
+            <div class="col-md-1accordion2">
+            </div>	
+        </div>
+    </div>
+    </div>
+  </div>

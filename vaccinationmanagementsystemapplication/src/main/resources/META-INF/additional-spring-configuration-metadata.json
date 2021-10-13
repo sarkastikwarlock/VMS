@@ -1,0 +1,77 @@
+{"properties": [
+  {
+    "name": "spring.doctors.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.doctors.datasource.url'"
+  },
+  {
+    "name": "spring.doctors.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.doctors.datasource.username'"
+  },
+  {
+    "name": "spring.doctors.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.doctors.datasource.password'"
+  },
+  {
+    "name": "spring.patients.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.patients.datasource.url'"
+  },
+  {
+    "name": "spring.patients.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.patients.datasource.username'"
+  },
+  {
+    "name": "spring.patients.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.patients.datasource.password'"
+  },
+  {
+    "name": "spring.admins.datasource.url",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.admins.datasource.url'"
+  },
+  {
+    "name": "spring.admins.datasource.username",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.admins.datasource.username'"
+  },
+  {
+    "name": "spring.admins.datasource.password",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.admins.datasource.password'"
+  },
+  {
+    "name": "spring.doctors.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.doctors.datasource.driver-class-name'"
+  },
+  {
+    "name": "spring.doctors.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.doctors.datasource.jdbcUrl'"
+  },
+  {
+    "name": "spring.patients.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.patients.datasource.jdbcUrl'"
+  },
+  {
+    "name": "spring.patients.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.patients.datasource.driver-class-name'"
+  },
+  {
+    "name": "spring.admins.datasource.jdbcUrl",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.admins.datasource.jdbcUrl'"
+  },
+  {
+    "name": "spring.admins.datasource.driver-class-name",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.admins.datasource.driver-class-name'"
+  }
+]}

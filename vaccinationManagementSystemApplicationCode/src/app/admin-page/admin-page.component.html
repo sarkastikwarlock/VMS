@@ -1,0 +1,1110 @@
+<!--adminPage modal-->
+<div id="adminPageModal" class="flexbox show card adminPage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+        <div class="flexbox-content">
+            <div class="flexbox-header"><br>
+                <h2 class="text-center">Admin Page</h2><br>
+            </div>
+            <div class="flexbox-body" id="main-container">
+                <div style="display: inline-flex;"><small>Session: Admin ({{this.data}})</small><logout></logout></div>
+                <br>
+                <form class="form col-md-12 center-block">
+                    <div class="tab">
+                        <button [class.active]="viewMode=='Patients'" (click)="viewMode='Patients'">Patients</button>
+                        <button [class.active]="viewMode=='Doctors'" (click)="viewMode='Doctors'">Doctors</button>
+                        <button [class.active]="viewMode=='Centres'" (click)="viewMode='Centres'">Vaccination Centres</button>
+                        <button [class.active]="viewMode=='Feedbacks'" (click)="viewMode='Feedbacks'">Feedbacks</button>
+                    </div>
+                    <div class="form-group" [ngSwitch]="viewMode">  
+                        <div class="tabcontent" *ngSwitchCase="'Patients'">
+                            <div style="display: inline-flex; padding-bottom: 3px;">
+                                <h3>Patients</h3> &nbsp;
+                                <button class="addBtn" style="float: right;" (click)="onOpenModal(null, addPatientModal)">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-plus fa-stack-1x fa-inverse" style="color:white;"></i>
+                                    </span>
+                                    Add Patient &nbsp;
+                                </button>
+                            </div>
+                            <table class="table user-list" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="width:24%"><span>Fullname</span></th>
+                                        <th style="width:27%"><span>Email</span></th>
+                                        <th style="width:18%"><span>Phone</span></th>
+                                        <th style="width:15%"><span>Date of Birth</span></th>
+                                        <th style="width: 13%;"></th>
+                                    </tr>
+                                </thead>
+                            <tbody>
+                                <tr *ngFor="let patient of patients">
+                                    <td>{{patient?.patientFullname}}</td>
+                                    <td>{{patient?.patientEmail}}</td>
+                                    <td>{{patient?.patientPhone}}</td>
+                                    <td>{{patient?.patientDOB}}</td>
+                                    <td>
+                                        <button class="table-link text-warning iconBtn" (click)="onOpenModal(patient, detailPatientModal)">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </button>
+                                        <button class="table-link text-info iconBtn" (click)="onOpenModal(patient, editPatientModal)">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </button>
+                                        <button class="table-link danger iconBtn" (click)="onOpenModal(patient, deleteModal)">
+                                            <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                            </span>
+                                        </button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        </div>
+                        <div class="tabcontent" *ngSwitchCase="'Doctors'">
+                            <div style="display: inline-flex; padding-bottom: 3px;">
+                                <h3>Doctors</h3> &nbsp;
+                                <button class="addBtn" style="float: right;" (click)="onOpenModal(null, addDoctorModal)">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-plus fa-stack-1x fa-inverse" style="color:white;"></i>
+                                    </span>
+                                    Add Doctor &nbsp;
+                                </button>
+                            </div>              
+                            <table class="table user-list" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 12%;"><span>Fullname</span></th>
+                                        <th style="width: 13%;"><span>Medical Field</span></th>
+                                        <th style="width: 13%;"><span>Medical Accreditation</span></th>
+                                        <th style="width: 12%;"><span>Email</span></th>
+                                        <th style="width: 10%;"><span>Phone</span></th>
+                                        <th style="width: 11%;"><span>Date of Birth</span></th>
+                                        <th style="width: 10%;" class="text-center"><span>Status Qualified</span></th>
+                                        <th  style="width: 12%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let doctor of doctors">
+                                        <td>{{doctor?.doctorFullname}}</td>
+                                        <td>{{doctor?.doctorField}}</td>
+                                        <td>{{doctor?.doctorAccreditation}}</td>
+                                        <td>{{doctor?.doctorEmail}}</td>
+                                        <td>{{doctor?.doctorPhone}}</td>
+                                        <td>{{doctor?.doctorDOB}}</td>
+                                        <td class="text-center">
+                                            <label class="switch">
+                                                <input type="checkbox" (click)="toggleQualified(doctor)" [checked]="doctor.isQualified">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <button class="table-link text-warning iconBtn" (click)="onOpenModal(doctor, detailDoctorModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link text-info iconBtn" (click)="onOpenModal(doctor, editDoctorModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link danger iconBtn" (click)="onOpenModal(doctor, deleteModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>   
+                        <div class="tabcontent" *ngSwitchCase="'Centres'">
+                            <div style="display: inline-flex; padding-bottom: 3px;">
+                                <h3>Vaccination Centres</h3> &nbsp;
+                                <button class="addBtn" style="float: right;" (click)="onOpenModal(null, addCentreModal)">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-plus fa-stack-1x fa-inverse" style="color:white;"></i>
+                                    </span>
+                                    Add Vaccination Centres &nbsp;
+                                </button>
+                            </div>
+                            <table class="table user-list" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10%;"><span>Centre's name</span></th>
+                                        <th style="width: 12%;"><span>Centre's Address</span></th>
+                                        <th style="width: 10%;"><span>Centre's Email</span></th>
+                                        <th style="width: 9%;"><span>Centre's Phone</span></th>
+                                        <th style="width: 12%;"><span>Centre's Opening Hours</span></th>
+                                        <th style="width: 9%;"><span>Centre's Vaccine Type</span></th>
+                                        <th style="width: 9%;" class="text-center"><span>Status Qualified</span></th>
+                                        <th style="width: 13%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let centre of centres|sortPipe">
+                                        <td>{{centre?.centreName}}</td>
+                                        <td>{{centre?.centreAddress}}</td>
+                                        <td>{{centre?.centreEmail}}</td>
+                                        <td>{{centre?.centrePhone}}</td>
+                                        <td>{{centre?.centreOpening}} - {{centre?.centreClosing}}</td>
+                                        <td>{{centre?.centreVaccine}}</td>
+                                        <td class="text-center">
+                                            <label class="switch">
+                                                <input type="checkbox" (click)="toggleCentreQualified(centre)" [checked]="centre.isQualified">
+                                                <span class="slider round"></span>
+                                            </label>
+                                        <td>
+                                            <button class="table-link text-warning iconBtn" (click)="onOpenModal(centre, detailCentreModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link text-info iconBtn" (click)="onOpenModal(centre, editCentreModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link danger iconBtn" (click)="onOpenModal(centre, deleteModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="tabcontent" *ngSwitchCase="'Feedbacks'">
+                            <div style="display: inline-flex; padding-bottom: 3px;">
+                                <h3>Feedbacks</h3> &nbsp;
+                                <button class="addBtn" style="float: right;" (click)="onOpenModal(null, addFeedbackModal)">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-plus fa-stack-1x fa-inverse" style="color:white;"></i>
+                                    </span>
+                                    Add Feedback &nbsp;
+                                </button>
+                            </div>
+                            <table class="table user-list" style="width:100%">
+                                <thead>
+                                    <tr>
+                                        <th style="width: 10%;"><span>Feedback ID</span></th>
+                                        <th style="width: 13%;"><span>Feedback Type</span></th>
+                                        <th style="width: 12%;"><span>Feedback Ratings</span></th>
+                                        <th style="width: 17%;"><span>Feedback Details</span></th>
+                                        <th style="width: 13%;"><span>Feedback Time</span></th>
+                                        <th style="width: 13%;"></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let feedback of feedbacks">
+                                        <td>{{feedback?.feedbackId}}</td>
+                                        <td>{{feedback?.feedbackType}}</td>
+                                        <td>{{feedback?.feedbackRatings}}</td>
+                                        <td>{{feedback?.feedbackDetails}}</td>
+                                        <td>{{feedback?.feedbackTime}}</td>
+                                        <td>
+                                            <button class="table-link text-warning iconBtn" (click)="onOpenModal(feedback, detailFeedbackModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link text-info iconBtn" (click)="onOpenModal(feedback, editFeedbackModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                            <button class="table-link danger iconBtn" (click)="onOpenModal(feedback, deleteModal)">
+                                                <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="flexbox-footer">
+                <div class="col-md-1accordion2"></div>	
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!--Delete Modal-->
+<ng-template class="modal fade" #deleteModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Delete</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            Are you sure you want to delete?
+                        </div>
+                        <div class="modal-footer" style="margin: auto;">
+                            <button type="button" class="btn btn-primary" name="cancelBtn" (click)="onDelete()">Delete</button>
+                            <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+  </ng-template>
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!--AddPatient Modal-->
+<ng-template class="modal fade" #addPatientModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" [class.has-error]="patientFullname.invalid && patientFullname.touched||checkNameIsFilled(this.patientData.patientFullname) && isClicked">
+                                <label class="control-label">Fullname: </label><br>
+                                <input type="text" id="patientFullname" class="form-control input-lg" name="patientFullname" placeholder="Fullname" #patientFullname="ngModel" [(ngModel)]="patientData.patientFullname" pattern="^[a-zA-Z \']+$" (ngModelChange)="checkNameIsFilled(patientData.patientFullname)" required>
+                                <small *ngIf="patientFullname.errors?.required && patientFullname.touched||checkNameIsFilled(this.patientData.patientFullname) && isClicked">&nbsp;Name is required.</small>
+                                <small *ngIf="patientFullname.errors?.pattern && patientFullname.touched">&nbsp;Name may only contain alphabets.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientEmail.invalid && patientEmail.touched||!emailIsFilled && isClicked">
+                                <label class="control-label">E-mail:</label>
+                                <input type="email" class="form-control input-lg" id="patientEmail" #patientEmail="ngModel" name="patientEmail" placeholder="E-mail" required [(ngModel)]="patientData.patientEmail" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$" (ngModelChange)="checkEmailIsFilled(patientData.patientEmail)">
+                                <small *ngIf="patientEmail.errors?.required && patientEmail.touched||!emailIsFilled && isClicked">E-mail is required.</small>
+                                <small *ngIf="patientEmail.errors?.pattern && patientEmail.touched">Please enter the proper e-mail format. Eg.john.doe@gmail.com</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPassword.invalid && patientPassword.touched||!passwordIsFilled && isClicked">
+                                <label class="control-label">Password:</label>
+                                <input type="password" class="form-control input-lg" name="patientPassword" id="patientPassword" #patientPassword="ngModel" placeholder="Password" required [(ngModel)]="patientData.patientPassword" pattern="^([a-zA-Z0-9!@#$%^&*]){8,}$" (ngModelChange)="checkPasswordIsFilled(patientData.patientPassword)">
+                                <small *ngIf="patientPassword.errors?.required && patientPassword.touched||!passwordIsFilled && isClicked">Password is required.</small>
+                                <small *ngIf="patientPassword.errors?.pattern && patientPassword.touched">Password have to be at least 8 characters long.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientReTypePassword.invalid && patientReTypePassword.touched || patientReTypePassword.errors?.pattern && patientReTypePassword.touched||!retypeIsFilled && isClicked">
+                                <label class="control-label">Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" id="patientReTypePassword" #patientReTypePassword="ngModel" name="patientReTypePassword"placeholder="Re-Type Password" required [(ngModel)]="reTypePatientAddPassword" [pattern]="patientData.patientPassword"  (ngModelChange)="checkRetypeIsFilled(reTypePatientAddPassword)">
+                                <small *ngIf="patientReTypePassword.errors?.required && patientReTypePassword.touched||!retypeIsFilled && isClicked">Please enter the password.</small>
+                                <small *ngIf="patientReTypePassword.errors?.pattern && patientReTypePassword.touched">Password is not matching. Please re-enter the password.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientId.invalid && patientId.touched||!idIsFilled && isClicked">
+                                <label class="control-label">NRIC:</label>
+                                <input type="text" class="form-control input-lg" id="patientId" #patientId="ngModel" name="patientId" placeholder="NRIC" required [(ngModel)]="patientData.patientId" pattern="^[STFGstfg]\d{7}[a-zA-Z]$" (ngModelChange)="checkIdIsFilled(patientData.patientId)">
+                                <small *ngIf="patientId.errors?.required && patientId.touched||!idIsFilled && isClicked">NRIC is required.</small>
+                                <small *ngIf="patientId.errors?.pattern && patientId.touched">NRIC should start with either S,T,F,G contains 7 digits in between and ends with an alphabet.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientDOB.invalid && patientDOB.touched || this.timeDiff<12 && patientDOB.touched||!dobIsFilled && isClicked">
+                                <label class="control-label">Date of birth:</label>
+                                <input type="date" [max]="maxDate" class="form-control input-lg" id="patientDOB" #patientDOB="ngModel" name="patientDOB"  placeholder="yyyy-MM-dd" required [(ngModel)]="patientData.patientDOB" (change)="ageValidationForInput(patientData.patientDOB)" (ngModelChange)="checkDobIsFilled(patientData.patientDOB)">
+                                <small *ngIf="patientDOB.errors?.required && patientDOB.touched||!dobIsFilled && isClicked">Date of birth is required.</small>
+                                <small *ngIf="this.timeDiff<12 && patientDOB.touched">You have to be at least 12 year old to register for a vaccine.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPhone.invalid && patientPhone.touched||!phoneIsFilled && isClicked">
+                                <label class="control-label">Phone Number:</label>
+                                <input type="text" class="form-control input-lg" id="patientPhone" #patientPhone="ngModel" name="patientPhone" placeholder="Phone Number" required [(ngModel)]="patientData.patientPhone" pattern="^[896]\d{7}$" (ngModelChange)="checkPhoneIsFilled(patientData.patientPhone)">
+                                <small *ngIf="patientPhone.errors?.required && patientPhone.touched||!phoneIsFilled && isClicked">Phone is required.</small>
+                                <small *ngIf="patientPhone.errors?.pattern && patientPhone.touched">Phone number should be 8 digits long and start with either 8, 9 or 6 (for landline).</small>
+                            </div>
+                        </div>  
+                        
+                    </form>
+                    <div class="modal-footer" style="justify-content: center; margin: auto;">
+                        <button type="submit" class="btn btn-primary" ngbAutofocus (click)="isPatientExist()">Add Patient</button>
+                        <button type="reset" class="btn btn-secondary cancelBtn" data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</ng-template>
+
+<!--EditPatient Modal-->
+<ng-template class="modal fade" #editPatientModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" [class.has-error]="patientFullname.invalid && patientFullname.touched||checkNameIsFilled(objectData.patientFullname)&&patientFullname.touched||nameValidationFailed||nameIsFilled && isClicked">
+                                <label class="control-label">Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" id="patientFullname" #patientFullname="ngModel" name="patientFullname" placeholder="Fullname" [(ngModel)]="objectData.patientFullname" (mgModalChange)="!checkNameIsFilled(objectData.patientFullname)" pattern="^[a-zA-Z \']+$">
+                                <small *ngIf="patientFullname.errors?.required && patientFullname.touched || checkNameIsFilled(objectData.patientFullname)&&patientFullname.touched||nameValidationFailed||nameIsFilled && isClicked">Name is required.</small>
+                                <small *ngIf="patientFullname.errors?.pattern && patientFullname.touched">Name may only contain alphabets.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientEmail.invalid && patientEmail.touched||checkEmailIsFilled(objectData.patientEmail)&&patientEmail.touched|| emailValidationFailed||emailIsFilled && isClicked">
+                                <label class="control-label">E-mail:</label>
+                                <input type="email" class="form-control input-lg" id="patientEmail" #patientEmail="ngModel" name="patientEmail" placeholder="E-mail" [(ngModel)]="objectData.patientEmail" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                                <small *ngIf="patientEmail.errors?.required && patientEmail.touched || checkEmailIsFilled(objectData.patientEmail)&&patientEmail.touched||emailIsFilled && isClicked">E-mail is required.</small>
+                                <small *ngIf="patientEmail.errors?.pattern && patientEmail.touched|| emailValidationFailed">Please enter the proper e-mail format. Eg.john.doe@gmail.com</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPassword.invalid && patientPassword.touched ||checkPasswordIsFilled(objectData.patientPassword)&&patientPassword.touched|| passwordValidationFailed||passwordIsFilled && isClicked||isPasswordMatching(this.objectData.patientPassword, reTypePatientPassword)">
+                                <label>Password:</label>
+                                <input type="password" class="form-control input-lg" id="patientPassword" #patientPassword="ngModel" name="patientPassword" placeholder="Password" [(ngModel)]="objectData.patientPassword" (ngModelChange)="isPasswordMatching(this.objectData.patientPassword, reTypePatientPassword)" pattern="^([a-zA-Z0-9!@#$%^&* ]){8,}$">
+                                <small *ngIf="patientPassword.errors?.required && patientPassword.touched||checkPasswordIsFilled(objectData.patientPassword)&&patientPassword.touched||passwordIsFilled && isClicked">Password is required.</small>
+                                <small *ngIf="patientPassword.errors?.pattern && patientPassword.touched|| passwordValidationFailed">Password have to be at least 8 characters long.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientReTypePassword.invalid && patientReTypePassword.touched || patientReTypePassword.errors?.pattern || checkRetypeIsFilled(reTypePatientPassword)|| retypeValidationFailed||retypeIsFilled && isClicked||isPasswordMatching(this.objectData.patientPassword, reTypePatientPassword)"> 
+                                <label class="control-label">Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" id="patientReTypePassword" #patientReTypePassword="ngModel" name="patientReTypePassword" placeholder="Re-Type Password" [(ngModel)]="reTypePatientPassword" (ngModelChange)="isPasswordMatching(this.objectData.patientPassword, reTypePatientPassword)" [pattern]="this.objectData.patientPassword">
+                                <small *ngIf="patientReTypePassword.errors?.required && patientReTypePassword.touched||checkRetypeIsFilled(reTypePatientPassword)||retypeIsFilled && isClicked">Please re-enter the password.</small>
+                                <small *ngIf="patientReTypePassword.errors?.pattern|| retypeValidationFailed">Password is not matching.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientId.invalid && patientId.touched ||checkIdIsFilled(objectData.patientId)&&patientId.touched|| idValidationFailed||idIsFilled && isClicked">
+                                <label class="control-label">NRIC:</label>
+                                <input type="text" class="form-control input-lg" id="patientId" #patientId="ngModel" name="patientId" placeholder="NRIC" [(ngModel)]="objectData.patientId" pattern="^[STFGstfg]\d{7}[a-zA-Z]$">
+                                <small *ngIf="patientId.errors?.required && patientId.touched ||checkIdIsFilled(objectData.patientId)&&patientId.touched||idIsFilled && isClicked">NRIC is required.</small>
+                                <small *ngIf="patientId.errors?.pattern && patientId.touched|| idValidationFailed">NRIC should start with either S,T,F,G contains 7 digits in between and ends with an alphabet.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientDOB.invalid && patientDOB.touched || this.timeDiff<12 && patientDOB.touched||checkDobIsFilled(objectData.patientDOB)&&patientDOB.touched|| dobValidationFailed||dobIsFilled && isClicked">
+                                <label class="control-label">Date of birth:</label>
+                                <input type="date" [max]="maxDate" class="form-control input-lg" id="patientDOB" #patientDOB="ngModel" name="patientDOB" placeholder="dd/mmm/yyyy" [(ngModel)]="objectData.patientDOB" (change)="ageValidationForInput(objectData.patientDOB)">
+                                <small *ngIf="patientDOB.errors?.required && patientDOB.touched||checkDobIsFilled(objectData.patientDOB)&&patientDOB.touched||dobIsFilled && isClicked">Date of birth is required.</small>
+                                <small *ngIf="this.timeDiff<12 && patientDOB.touched|| dobValidationFailed">You have to be at least 12 year old to register for a vaccine.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPhone.invalid && patientPhone.touched ||checkPhoneIsFilled(objectData.patientPhone)&&patientPhone.touched|| phoneValidationFailed||phoneIsFilled && isClicked">
+                                <label class="control-label">Phone Number:</label>
+                                <input type="text" class="form-control input-lg" id="patientPhone" #patientPhone="ngModel" name="patientPhone" placeholder="Phone Number" [(ngModel)]="objectData.patientPhone" pattern="^[896]\d{7}$">
+                                <small *ngIf="patientPhone.errors?.required && patientPhone.touched||checkPhoneIsFilled(objectData.patientPhone)&&patientPhone.touched||phoneIsFilled && isClicked">Phone is required.</small>
+                                <small *ngIf="patientPhone.errors?.pattern && patientPhone.touched|| phoneValidationFailed">Phone number should be 8 digits long and start with either 8, 9 or 6 (for landline).</small>
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Centre:</label>
+                                <select [(ngModel)]="this.objectData.patientFirstCentre" name="bookFirstDose" id="bookFirstDose" class="form-control" (ngModalChange)="locationEqual(objectData.patientFirstCentre, objectData.patientSecondCentre)">
+                                    <option [ngValue]="null" disabled>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres|sortPipe">{{centre.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group" [class.has-error]="dateValidationFailed">
+                                <label>First Vaccination Date:</label>
+                                <input type="date" [min]="minDateFirst" class="form-control input-lg" name="patientFirstDate" placeholder="dd/mm/yyyy" [(ngModel)]="objectData.patientFirstDate" (ngModelChange)="dateValidation(objectData.patientFirstDate, objectData.patientSecondDate)">
+                                <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Time:</label>
+                                <input type="time" class="form-control input-lg" name="patientFirstTime" placeholder="00:00 24-Hours format" [(ngModel)]="objectData.patientFirstTime">
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Centre:</label>
+                                <select [(ngModel)]="this.objectData.patientSecondCentre" name="patientSecondCentre" id="patientSecondCentre" class="form-control"> 
+                                    <option [ngValue]="null" disabled>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres">{{centre.centreName}}</option>
+                                </select>
+                                <small *ngIf="objectData.patientFirstCentre!= objectData.patientSecondCentre" class="has-error">*Note: Location for first and second vaccination is different.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="dateValidationFailed">
+                                <label>Second Vaccination Date:</label>
+                                <input type="date" [min]="minDateSecond" class="form-control input-lg" name="patientSecondDate" placeholder="dd/mm/yyyy" [(ngModel)]="objectData.patientSecondDate" (ngModelChange)="dateValidation(objectData.patientFirstDate, objectData.patientSecondDate)">
+                                <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Time:</label>
+                                <input type="time" class="form-control input-lg" name="patientSecondTime" placeholder="00:00 24-Hours format" [(ngModel)]="objectData.patientSecondTime">
+                            </div>
+                            <div style="display: inline-flex; text-align: center; margin: auto;">
+                                
+                                <label>First Dose:&nbsp;</label>
+                                <label class="switch">
+                                    <input type="checkbox" (click)="toggleFirstDose(objectData)" [checked]="objectData.firstDoseIsDone">
+                                    <span class="slider round"></span>
+                                </label>
+                                
+                                <label>Second Dose:&nbsp;</label>
+                                <label class="switch">
+                                    <input type="checkbox" (click)="toggleSecondDose(objectData)" [checked]="objectData.secondDoseIsDone">
+                                    <span class="slider round"></span>
+                                </label>
+                                
+                            </div>
+                            <div class="form-group">
+                                
+                            </div>
+                        </div>
+                    </form>
+                    <div class="modal-footer"  style="justify-content: center; margin:auto">
+                        <button type="submit" class="btn btn-primary" (click)="updatePatient()">Save Changes</button>
+                        <button type="reset" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+</ng-template>
+
+<!--detailPatient Modal-->
+<ng-template class="modal fade" #detailPatientModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Patients Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Fullname: </label><span> {{objectData.patientFullname}}</span></div>
+                                <div style="float: right;"><label>NRIC:</label><span> {{objectData.patientId}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left; clear:both;"><label>E-mail: </label><span> {{objectData.patientEmail}}</span></div>
+                                <div style="float: right;"><label>Phone:</label><span> {{objectData.patientPhone}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left; clear:both;"><label>Date of Birth:</label><span>{{objectData.patientDOB}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientFirstCentre">
+                                <div style="float: left; clear:both;"><label>First Dose: </label><span> {{objectData.patientFirstCentre}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientFirstDate">
+                                <div style="float: left; clear:both;"><label>First Dose Date:</label><span> {{objectData.patientFirstDate}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientFirstTime">
+                                <div style="float: left; clear:both;"><label>First Dose Time:</label><span> {{objectData.patientFirstTime}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientSecondCentre">
+                                <div style="float: left; clear:both;"><label>Second Dose: </label><span> {{objectData.patientSecondCentre}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientSecondDate">
+                                <div style="float: left; clear:both;"><label>Second Dose Date:</label><span> {{objectData.patientSecondDate}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;" [hidden]="!objectData.patientSecondTime">
+                                <div style="float: left; clear:both;"><label>Second Dose Time:</label><span> {{objectData.patientSecondTime}} </span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left; clear:both;"><label>First Dose is Done:</label><span> {{objectData.firstDoseIsDone}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left; clear:both;"><label>Second Dose is Done:</label><span> {{objectData.secondDoseIsDone}}</span></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+                <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!--addDoctor Modal-->
+<ng-template class="modal fade" #addDoctorModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Add Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Fullname: </label><br>
+                                <input type="text" name="doctorFullname" class="form-control input-lg" placeholder="Fullname" [(ngModel)]="doctorData.doctorFullname">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="email" name="doctorEmail" class="form-control input-lg" placeholder="E-mail"[(ngModel)]="doctorData.doctorEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" name="doctorPassword" class="form-control input-lg" placeholder="Password"[(ngModel)]="doctorData.doctorPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>Re-Type Password:</label>
+                                <input type="password" name="reTypeDoctorPassword" class="form-control input-lg" placeholder="Re-Type Password" [(ngModel)]="reTypeDoctorAddPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>NRIC:</label>
+                                <input type="text" name="doctorId" class="form-control input-lg" placeholder="NRIC" [(ngModel)]="doctorData.doctorId">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of birth:</label>
+                                <input type="date" [max]="maxDate" name="doctorDOB" class="form-control input-lg" placeholder="dd/mmm/yyyy" [(ngModel)]="doctorData.doctorDOB">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                <input type="text" name="doctorPhone" class="form-control input-lg" placeholder="Phone Number" [(ngModel)]="doctorData.doctorPhone">
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Field:</label>
+                                <select name="doctorField" id="medicalField" class="form-control" [(ngModel)]="doctorData.doctorField">
+                                    <option value="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="field" *ngFor="let field of medicalField">{{field}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Accredition:</label>
+                                <input type="text" name="doctorAccreditation" class="form-control input-lg" placeholder="Medical Accredition" [(ngModel)]="doctorData.doctorAccreditation">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer" style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="isDoctorExist()">Add Doctor</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--EditDoctor Modal-->
+<ng-template class="modal fade" #editDoctorModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Doctor</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" name="doctorFullname" placeholder="Fullname" [(ngModel)]="objectData.doctorFullname">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail:</label>
+                                <input type="email" class="form-control input-lg" name="doctorEmail" placeholder="Email" [(ngModel)]="objectData.doctorEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Password:</label>
+                                <input type="password" class="form-control input-lg" name="doctorPassword" placeholder="Password" [(ngModel)]="objectData.doctorPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" name="doctorReTypePassword" placeholder="Re-Type Password" [(ngModel)]="reTypeDoctorPassword">
+                            </div>
+                            <div class="form-group">
+                                <label>NRIC:</label>
+                                <input type="text" class="form-control input-lg" name="doctorId" placeholder="NRIC" [(ngModel)]="objectData.doctorId">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of birth:</label>
+                                <input type="date" [max]="maxDate" class="form-control input-lg" name="doctorDOB" placeholder="Date of Birth" [(ngModel)]="objectData.doctorDOB">
+                            </div>
+                            <div class="form-group">
+                                <label>Phone Number:</label>
+                                <input type="text" class="form-control input-lg" name="doctorPhone" placeholder="Phone Number" [(ngModel)]="objectData.doctorPhone">
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Field:</label>
+                                <select name="doctorField" id="medicalField" class="form-control" [(ngModel)]="objectData.doctorField">
+                                    <option value="undefined" selected>--Select an option--</option>
+                                    <option [ngValue]="field" *ngFor="let field of medicalField">{{field}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Medical Accredition:</label>
+                                <input type="text" name="doctorAccreditation" class="form-control input-lg" placeholder="Medical Accredition" [(ngModel)]="objectData.doctorAccreditation">
+                            </div>
+                            <div class="vaccineCheckbox">
+                                <label for="Gp" class="form-control input-lg">
+                                    Is a Gp?
+                                    <input type="checkbox" id="Gp" name="Gp" value="true">
+                                </label>
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Centre:</label>
+                                <input type="text" class="form-control input-lg" name="doctorFirstCentre" placeholder="First Vaccination Centre" [(ngModel)]="objectData.doctorFirstCentre">
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="doctorFirstDate" placeholder="Doctor First Date" [(ngModel)]="objectData.doctorFirstDate">
+                            </div>
+                            <div class="form-group">
+                                <label>First Vaccination Timing:</label>
+                                <input type="text" class="form-control input-lg" name="doctorFirstTime" placeholder="First Vaccination Timing" [(ngModel)]="objectData.doctorFirstTime">
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Centre:</label>
+                                <input type="text" class="form-control input-lg" name="doctorSecondCentre" placeholder="Second Vaccination Centre" [(ngModel)]="objectData.doctorSecondCentre">
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="doctorSecondDate" placeholder="Doctor Second Date" [(ngModel)]="objectData.doctorSecondDate">
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Timing:</label>
+                                <input type="text" class="form-control input-lg" name="doctorSecondTime" placeholder="Second Vaccination Timing" [(ngModel)]="objectData.doctorSecondTime">
+                            </div>
+                            <div class="form-group">
+                                <label>Third Vaccination Centre:</label>
+                                <input type="text" class="form-control input-lg" name="doctorThirdCentre" placeholder="Third Vaccination Centre" [(ngModel)]="objectData.doctorThirdCentre">
+                            </div>
+                            <div class="form-group">
+                                <label>Third Vaccination Date:</label>
+                                <input type="date" class="form-control input-lg" name="doctorThirdDate" placeholder="Doctor Third Date" [(ngModel)]="objectData.doctorThirdDate">
+                            </div>
+                            <div class="form-group">
+                                <label>Third Vaccination Timing:</label>
+                                <input type="text" class="form-control input-lg"  name="doctorThirdTime" placeholder="Third Vaccination Timing" [(ngModel)]="objectData.doctorThirdTime">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updateDoctor()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--detailDoctor Modal-->
+<ng-template class="modal fade" #detailDoctorModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Doctors Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" style="display: inline;">
+                            <div style="float: left;"><label>Fullname: </label><span> {{objectData.doctorFullname}}</span></div>
+                            <div style="float: right;"><label>NRIC:</label><span> {{objectData.doctorId}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;">
+                            <div style="float: left; clear: both;"><label>E-mail: </label><span> {{objectData.doctorEmail}}</span></div>
+                        </div>
+                        <div class="form-group" style="display:inline;">
+                            <div style="float: left; clear: both;"><label>Phone:</label><span> {{objectData.doctorPhone}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;">
+                            <div style="float: left;  clear: both;"><label>Date of Birth:</label><span> {{objectData.doctorDOB}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;">
+                            <div style="float: left;  clear: both;"><label>Is A Gp:</label><span> {{objectData.isAGp}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;">
+                            <div style="float: left;  clear: both;"><label>Medical Field:</label><span> {{objectData.doctorField}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;">
+                            <div style="float: left;  clear: both;"><label>Medical Accreditation:</label><span> {{objectData.doctorAccreditation}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorFirstCentre)">
+                            <div style="float: left;  clear: both;"><label>First Centre: </label><span> {{objectData.doctorFirstCentre}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorFirstCentre)">
+                            <div style="float: left;  clear: both;"><label>First Schedule:</label><span> {{objectData.doctorFirstDate}}, {{objectData.doctorFirstTime}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorSecondCentre)">
+                            <div style="float: left;  clear: both;"><label>Second Centre: </label><span> {{objectData.doctorSecondCentre}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorSecondCentre)">
+                            <div style="float: left;  clear: both;"><label>Second Schedule:</label><span> {{objectData.doctorSecondDate}}, {{objectData.doctorSecondTime}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorThirdCentre)">
+                            <div style="float: left;  clear: both;"><label>Third Centre: </label><span> {{objectData.doctorThirdCentre}}</span></div>
+                        </div>
+                        <div class="form-group" style="display: inline;" [hidden]="!(objectData.doctorThirdCentre)">
+                            <div style=" clear: both;"><label>Third Schedule:</label><span> {{objectData.doctorThirdDate}}, {{objectData.doctorThirdTime}}</span></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer"  style="margin:auto">
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!--addCentreModal-->
+<ng-template class="modal fade" #addCentreModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Vaccination Centre</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="flexbox-body">
+            <form class="form col-md-12 center-block">    
+              <div class="form-group">
+                  <div class="form-group">
+                    <label>Centre's Fullname:</label>
+                    <input type="text" name="centreName" class="form-control input-lg" placeholder="Centre's Fullname" [(ngModel)]="centreData.centreName">
+                </div>
+                  <div>
+                    <label>Centre's E-mail:</label>
+                    <input type="email" class="form-control input-lg" placeholder="Centre's E-mail" name="centreEmail"  [(ngModel)]="centreData.centreEmail">
+                  </div>
+                  <div class="form-group">
+                    <label>Centre's Address:</label>
+                    <textarea id="centreAddressText" class="form-control input-lg" placeholder="Centre's Address..." rows="4" name="centreAddress"  [(ngModel)]="centreData.centreAddress"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>Centre's Phone:</label>
+                    <input type="text" class="form-control input-lg" placeholder="Centre's Phone" name="centrePhone"  [(ngModel)]="centreData.centrePhone">
+                  </div>
+                  <div class="form-group" >
+                    <label>Centre's Hours:</label>
+                    <div style="display:flex;">
+                        <input type="time" class="form-control input-lg" id="openingTime" name="centreOpening"  [(ngModel)]="centreData.centreOpening">
+                        <input type="time" class="form-control input-lg" id="closingTime" name="centreClosing"  [(ngModel)]="centreData.centreClosing">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>Centre's Vaccine Type:</label>
+                    <div class="vaccineCheckbox">
+                        <label for="moderna" class="form-control input-lg">
+                            <input type="checkbox" id="moderna" value="Moderna"  name="centreModerna" [(ngModel)]="checkModerna">
+                            Moderna
+                        </label>
+                    </div><br>
+                    <div class="vaccineCheckbox">
+                        <label for="pfizer"  class="form-control input-lg">
+                            <input type="checkbox" id="pfizer" value="Pfizer"  name="centrePfizer"  [(ngModel)]="checkPfizer">
+                            Pfizer
+                        </label>
+                    </div><br>
+                    <div class="">
+                        <label for="comirnaty"  class="form-control input-lg">
+                            <input type="checkbox" id="comirnaty" value="Comirnaty" name="centreComirnaty"  [(ngModel)]="checkComirnaty">
+                            Comirnaty
+                        </label>
+                    </div>
+                  </div>
+              </div>
+            </form>
+            </div>
+        </div>
+        
+        <div class="modal-footer" style="margin:auto">
+            <button type="button" class="btn btn-primary" (click)="isCentreExist()">Add Vaccination Centre</button>
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<!--editCentreModal-->
+<ng-template class="modal fade" #editCentreModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Vaccination Centre</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Centre's Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" placeholder="Centre's Name" name="centreName" [(ngModel)]="objectData.centreName">
+                            </div>
+                            <div class="form-group">
+                                <label>Centre ID:</label>
+                                <input type="text" class="form-control input-lg" placeholder="Centre's ID" name="centreID" [(ngModel)]="objectData.centreId" disabled>
+                            </div>
+                            <div>
+                                <label>Centre's E-mail:</label>
+                                <input type="email" class="form-control input-lg" placeholder="Centre's E-mail" name="centreEmail" [(ngModel)]="objectData.centreEmail">
+                            </div>
+                            <div class="form-group">
+                                <label>Centre's Address:</label>
+                                <textarea id="centreAddressText" class="form-control input-lg" placeholder="Centre's Address..." rows="4" name="centreAddress" [(ngModel)]="objectData.centreAddress"></textarea>
+                            </div>
+                            <div class="form-group">
+                                <label>Centre's Phone:</label>
+                                <input type="text" class="form-control input-lg" placeholder="Centre's Phone" name="centrePhone" [(ngModel)]="objectData.centrePhone">
+                            </div>
+                            <div class="form-group" >
+                                <label>Centre's Hours:</label>
+                                <div style="display:flex;">
+                                    <input type="time" class="form-control input-lg" id="openingTime" name="centreOpening" [(ngModel)]="objectData.centreOpening">
+                                    <input type="time" class="form-control input-lg" id="closingTime" name="centreClosing" [(ngModel)]="objectData.centreClosing">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Centre's Vaccine Type:</label>
+                                <div class="vaccineCheckbox">
+                                    <label for="moderna" class="form-control input-lg">
+                                        <input type="checkbox" id="moderna" name="centreModerna" value="Moderna" [(ngModel)]="checkModerna">
+                                        Moderna
+                                    </label>
+                                </div><br>
+                                <div class="vaccineCheckbox">
+                                    <label for="pfizer"  class="form-control input-lg">
+                                        <input type="checkbox" id="pfizer" name="centrePfizer" value="Pfizer" [(ngModel)]="checkPfizer">
+                                        Pfizer
+                                    </label>
+                                </div><br>
+                                <div class="vaccineCheckBox">
+                                    <label for="comirnaty"  class="form-control input-lg">
+                                        <input type="checkbox" id="comirnaty" name="centreCorminaty" value="Comirnaty" [(ngModel)]="checkComirnaty">
+                                        Comirnaty
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updateCentre()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--detailCentre Modal-->
+<ng-template class="modal fade" #detailCentreModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Vaccination Centre Details</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre Name: </label><span> {{objectData.centreName}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre ID:</label><span> {{objectData.centreId}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre Phone:</label><span> {{objectData.centrePhone}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre E-mail: </label><span> {{objectData.centreEmail}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre Address:</label><span> {{objectData.centreAddress}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre Hours: </label><span> {{objectData.centreOpening}} ~ {{objectData.centreClosing}}</span></div>
+                            </div>
+                            <div class="form-group" style="display: inline;">
+                                <div style="float: left;"><label>Centre Vaccine Type:</label><span> {{objectData.centreVaccine}}</span></div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--------------------------------------------------------------------------------------------------------->
+
+<!--addFeedbackModal-->
+  <ng-template class="modal fade" #addFeedbackModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 93%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Add Feedback</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="flexbox-body">
+            <form class="form col-md-12 center-block">    
+              <div class="form-group">
+                <label>Feedback Type: </label>
+                  <div class="form-group typeBtn" style="display: flex; text-align: center;">
+                    <br>
+                    <input type="radio" required id="compliment" (change)="typeSelect($event)" value="Compliment" name="type"  class="radioBtn"><label for="compliment"><div class="contentDiv1 typeChoice">Compliment</div></label>
+                    <input type="radio" required id="suggestion" (change)="typeSelect($event)" value="Suggetion" name="type" class="radioBtn"><label for="suggestion"><div class="contentDiv2 typeChoice">Suggestion</div></label>
+                    <input type="radio" required id="complain" (change)="typeSelect($event)" value="Complain" name="type" class="radioBtn"><label for="complain"><div class="contentDiv3 typeChoice" >Complain</div></label>
+                  </div>
+                  <div>
+                    <label>Feedback Ratings:</label>
+                    <br>
+                    <div class="feedbackIcon"  name="feedbackRatings">
+                        <label for="sunglasses" class="ratingsBtn"><input type="radio" id="sunglasses" name="ratings" (change)="ratingsSelect($event)" value="5"><h1 class="bi bi-emoji-sunglasses"></h1><small  for="awesome">Awesome!</small></label>
+                        <label for="smile" class="ratingsBtn"><input type="radio" id="smile" (change)="ratingsSelect($event)" name="ratings" value="4"><h1 class="bi bi-emoji-smile"></h1><small for="smile">Good!</small></label>
+                        <label for="neutral" class="ratingsBtn"><input type="radio" id="neutral" (change)="ratingsSelect($event)" name="ratings" value="3"><h1 class="bi bi-emoji-neutral"></h1><small for="neutral">Ok!</small></label>
+                        <label for="frown" class="ratingsBtn"><input type="radio" id="frown" (change)="ratingsSelect($event)" name="ratings" value="2"><h1 class="bi bi-emoji-frown"></h1><small for="frown">Meh!</small></label>
+                        <label for="dizzy" class="ratingsBtn"><input type="radio" id="dizzy" (change)="ratingsSelect($event)" name="ratings" value="1"><h1 class="bi bi-emoji-dizzy"></h1><small for="dizzy">...!</small></label>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <label>Feedback Details:</label>
+                    <textarea type="text" class="form-control input-lg" placeholder="Feedback Details..." name="feedbackDetails" [(ngModel)]="feedbackData.feedbackDetails"></textarea>
+                  </div>
+              </div>
+            </form>
+            </div>
+        
+        <div class="modal-footer" style="margin:auto">
+            <button type="button" class="btn btn-primary" (click)="addFeedback()">Add Feedback</button>
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<!--EditFeedback Modal-->
+<ng-template class="modal fade" #editFeedbackModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Edit Feedback</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="flexbox-body">
+            <form class="form col-md-12 center-block">    
+              <div class="form-group">
+                <div class="form-group">
+                    <label>Feedback ID: </label><br>
+                    <input type="text" class="form-control input-lg" name="feedbackId" disabled [(ngModel)]="objectData.feedbackId">
+                </div>
+                <label>Feedback Type: </label>
+                  <div class="form-group typeBtn" style="display: flex; text-align: center;" name="feedbackType" disabled [(ngModel)]="objectData.feedbackType">
+                    <br>
+                    <input type="radio" id="compliment" name="type"  class="radioBtn"><label for="compliment"><div class="contentDiv1 typeChoice">Compliment</div></label>
+                    <input type="radio" id="suggestion" name="type" class="radioBtn"><label for="suggestion"><div class="contentDiv2 typeChoice">Suggestion</div></label>
+                    <input type="radio" id="complain" name="type" class="radioBtn"><label for="complain"><div class="contentDiv3 typeChoice">Complain</div></label>
+                  </div>
+                  <div>
+                    <label>Feedback Ratings:</label>
+                    <br>
+                    <div class="feedbackIcon"  name="feedbackRatings" [(ngModel)]="objectData.feedbackRatings">
+                        <label for="sunglasses" class="ratingsBtn"><input type="radio" id="sunglasses" name="ratings" [value]="5"><h1 class="bi bi-emoji-sunglasses"></h1><small  for="awesome">Awesome!</small></label>
+                        <label for="smile" class="ratingsBtn"><input type="radio" id="smile" name="ratings" [value]="4"><h1 class="bi bi-emoji-smile"></h1><small for="smile">Good!</small></label>
+                        <label for="neutral" class="ratingsBtn"><input type="radio" id="neutral" name="ratings" [value]="3"><h1 class="bi bi-emoji-neutral"></h1><small for="neutral">Ok!</small></label>
+                        <label for="frown" class="ratingsBtn"><input type="radio" id="frown" name="ratings" [value]="2"><h1 class="bi bi-emoji-frown"></h1><small for="frown">Meh!</small></label>
+                        <label for="dizzy" class="ratingsBtn"><input type="radio" id="dizzy" name="ratings" [value]="1"><h1 class="bi bi-emoji-dizzy"></h1><small for="dizzy">...!</small></label>
+                    </div>
+                    <br>
+                  </div>
+                  <div class="form-group">
+                    <label>Feedback Details:</label>
+                    <textarea type="text" class="form-control input-lg" placeholder="Feedback Details..." [(ngModel)]="objectData.feedbackDetails">{{objectData.feedbackDetails}}</textarea>
+                  </div>
+              </div>
+            </form>
+            </div>
+
+
+    
+        <div class="modal-footer"  style="margin:auto">
+            <button type="button" class="btn btn-primary" (click)="updateFeedback()">Save Changes</button>
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+<!--detailFeedback Modal-->
+<ng-template class="modal fade" #detailFeedbackModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">Feedback Details</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="flexbox-body">
+                <form class="form col-md-12 center-block">
+                  <div class="form-group">
+                    <div class="form-group" style="display: inline;">
+                        <div style="float: left;"><label>Feedback ID:</label><span> {{objectData.feedbackId}}</span></div>
+                        <div style="float: right;"><label>Feedback Type:</label><span> {{objectData.feedbackType}}</span></div>
+                    </div>
+                    <div class="form-group" style="display: inline;">
+                        <div style="float: left;"><label>Feedback Ratings:</label><span> {{objectData.feedbackRatings}}</span></div>
+                    </div>
+                    <div class="form-group" style="display: inline;">
+                        <div style="float: left;"><label>Feedback Details:</label><br><span> {{objectData.feedbackDetails}}</span></div>
+                    </div>
+                    <div class="form-group" style="display: inline;">
+                        <div style="float: left; clear: both;"><label>Time:</label><span> {{objectData.feedbackTime}}</span></div>
+                    </div>
+                  </div>
+                </form>
+            </div>
+        </div>
+        <div class="modal-footer"  style="margin:auto">
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Close</button>
+        </div>
+      </div>
+    </div>
+</ng-template>
+
+

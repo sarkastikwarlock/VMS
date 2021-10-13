@@ -1,0 +1,236 @@
+<div id="patientPageModal" class="flexbox show card patientPage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+        <div class="flexbox-content">
+            <div class="flexbox-header"><br>
+                <h2 class="text-center">Patient Page</h2><br>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <div style="display: inline-flex;"><small>Session:  {{sessionName}} ({{sessionId?.replace(sessionId.substring(1,5),'****')}})</small><logout></logout></div>
+                    <br>
+                    <form class="form col-md-12 center-block">
+                        <br>
+                        <div class="tab">
+                            <div style="display: inline-flex; padding-bottom: 3px;">
+                                <button [class.active]="viewMode=='Information'" (click)="viewMode='Information';ngOnInit();">Personal Information</button>
+                                <button [class.active]="viewMode=='BookSlot'" (click)="viewMode='BookSlot';ngOnInit();">Book a Slot</button>
+                                <button [class.active]="viewMode=='Schedule'" (click)="viewMode='Schedule';ngOnInit();">View Vaccination Schedule</button>
+                            </div>
+                        </div>
+                        <div class="form-group" [ngSwitch]="viewMode">
+                            <div class="tabcontent" *ngSwitchCase="'Information'">
+                                <div style="width: 60%; margin: auto;">
+                                    <div class="form-group">
+                                        <form class="form col-md-12 center-block">
+                                            <div class="form-group">
+                                                <div class="form-group" style="display: inline;">
+                                                    <div style="float: left;"><label>Fullname:&nbsp;</label><span>{{sessionName}}</span></div>
+                                                    <div style="float: right;"><label>NRIC:&nbsp;</label><span>{{sessionId?.replace(sessionId.substring(1,5),'****')}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;">
+                                                    <div style="float: left; clear: both;"><label>E-mail:&nbsp;</label><span>{{sessionEmail}}</span></div>
+                                                    <div style="float: right;"><label>Phone:&nbsp;</label><span>{{sessionPhone?.replace(sessionPhone.substring(0,4),'****')}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;">
+                                                    <div style=" float: left; clear: both;"><label>Date of Birth:&nbsp;</label><span>{{sessionDOB|date:'**yy-**-dd'}}</span></div>
+                                                    <div class="form-group" style="float: right; position: relative; top: -5.5px">
+                                                        <button class="table-link text-info iconBtn" (click)="onOpenModal(patient, editPatientModal)">
+                                                            <span class="fa-stack">
+                                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <br>
+
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>  
+                            </div>
+                            <div class="tabcontent" *ngSwitchCase="'BookSlot'">
+                                <book-vaccine-slot [inputData]="this.patient"></book-vaccine-slot>
+                            </div>
+                            <div class="tabcontent" *ngSwitchCase="'Schedule'">
+                                <div style="width: 70%; margin: auto;">
+                                    <div class="form-group">
+                                        <form class="form col-md-12 center-block">
+                                            <div class="form-group">
+                                                <div class="form-group" style="text-align:center;" [hidden]="!(!this.patient.patientFirstCentre&&!this.patient.patientSecondCentre)">
+                                                    Please book a vaccination slot.
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientFirstCentre">
+                                                    <div style="float: left;"><label>First Vaccination Centre: </label><span> {{patient?.patientFirstCentre}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientFirstCentre">
+                                                    <div style="float: left; clear: both;"><label>First Date & Time: </label><span> {{patient?.patientFirstDate | date: 'yyyy-MM-dd'}}, {{patient?.patientFirstTime}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientFirstCentre">
+                                                    <div style="float: left; clear: both;"><label>First Dose:</label><span> {{patient?.firstDoseIsDone}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientSecondCentre">
+                                                    <div style="float: left; clear: both;"><label>Second Vaccination Centre:</label><span> {{patient?.patientSecondCentre}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientSecondCentre">
+                                                    <div style="float: left; clear: both;"><label>Second Second Date & Time:</label><span> {{patient?.patientSecondDate | date: 'yyyy-MM-dd'}}, {{patient?.patientSecondTime}}</span></div>
+                                                </div>
+                                                <div class="form-group" style="display: inline;" [hidden]="!this.patient.patientSecondCentre">
+                                                    <div style="float:left; clear: both;"><label>Second Dose:</label><span> {{patient?.secondDoseIsDone}}</span></div>
+                                                    <div class="form-group" style="float: right; position: relative; top: -5.5px">
+                                                        <button class="table-link text-info iconBtn" (click)="onOpenModal(patient, editPatientScheduleModal)">
+                                                            <span class="fa-stack">
+                                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                                <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                            </span>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <br>    
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>         
+                    </form> 
+                </div>
+            </div>
+        </div>
+    </div>
+</div> 
+
+
+
+
+
+<!--editPatient Modal-->
+<ng-template class="modal fade" #editPatientModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Patient</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group" [class.has-error]="patientFullname.invalid && patientFullname.touched||objectData.patientFullname==''&& patientFullname.touched">
+                                <label class="control-label">Fullname: </label><br>
+                                <input type="text" class="form-control input-lg" id="patientFullname" #patientFullname="ngModel" name="patientFullname" placeholder="Fullname" [(ngModel)]="objectData.patientFullname" pattern="^[a-zA-Z ]+$">
+                                <small *ngIf="patientFullname.errors?.required && patientFullname.touched || objectData.patientFullname==''&&patientFullname.touched">Name is required.</small>
+                                <small *ngIf="patientFullname.errors?.pattern && patientFullname.touched">Name may only contain alphabets.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientEmail.invalid && patientEmail.touched||objectData.patientEmail==''&&patientEmail.touched|| emailValidationFailed">
+                                <label class="control-label">E-mail:</label>
+                                <input type="email" class="form-control input-lg" id="patientEmail" #patientEmail="ngModel" name="patientEmail" placeholder="E-mail" [(ngModel)]="objectData.patientEmail" pattern="^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$">
+                                <small *ngIf="patientEmail.errors?.required && patientEmail.touched || objectData.patientEmail==''&&patientEmail.touched">E-mail is required.</small>
+                                <small *ngIf="patientEmail.errors?.pattern && patientEmail.touched|| emailValidationFailed">Please enter the proper e-mail format. Eg.john.doe@gmail.com</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPassword.invalid && patientPassword.touched ||objectData.patientPassword==''&&patientPassword.touched|| passwordValidationFailed">
+                                <label>Password:</label>
+                                <input type="password" class="form-control input-lg" id="patientPassword" #patientPassword="ngModel" name="patientPassword" placeholder="Password" [(ngModel)]="objectData.patientPassword" (ngModelChange)="isPasswordMatching(this.objectData.patientPassword, reTypePassword)" pattern="^([a-zA-Z0-9!@#$%^&* ]){8,}$">
+                                <small *ngIf="patientPassword.errors?.required && patientPassword.touched||objectData.patientPassword==''&&patientPassword.touched">Password is required.</small>
+                                <small *ngIf="patientPassword.errors?.pattern && patientPassword.touched|| passwordValidationFailed">Password have to be at least 8 characters long.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientReTypePassword.invalid && patientReTypePassword.touched || patientReTypePassword.errors?.pattern || reTypePassword==''|| retypeValidationFailed"> 
+                                <label class="control-label">Re-Type Password:</label>
+                                <input type="password" class="form-control input-lg" id="patientReTypePassword" #patientReTypePassword="ngModel" name="patientReTypePassword" placeholder="Re-Type Password" [(ngModel)]="reTypePassword" (ngModelChange)="isPasswordMatching(this.objectData.patientPassword, reTypePassword)" [pattern]="this.objectData.patientPassword">
+                                <small *ngIf="patientReTypePassword.errors?.required && patientReTypePassword.touched||reTypePassword==''">Please re-enter the password.</small>
+                                <small *ngIf="patientReTypePassword.errors?.pattern|| retypeValidationFailed">Password is not matching.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientId.invalid && patientId.touched ||objectData.patientId==''&&patientId.touched|| idValidationFailed">
+                                <label class="control-label">NRIC:</label>
+                                <input type="text" class="form-control input-lg" id="patientId" #patientId="ngModel" name="patientId" placeholder="NRIC" [(ngModel)]="objectData.patientId" pattern="^[STFGstfg]\d{7}[a-zA-Z]$">
+                                <small *ngIf="patientId.errors?.required && patientId.touched ||objectData.patientId==''&&patientId.touched">NRIC is required.</small>
+                                <small *ngIf="patientId.errors?.pattern && patientId.touched|| idValidationFailed">NRIC should start with either S,T,F,G contains 7 digits in between and ends with an alphabet.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientDOB.invalid && patientDOB.touched || this.timeDiff<12 && patientDOB.touched||objectData.patientDOB==''&&patientDOB.touched|| dobValidationFailed">
+                                <label class="control-label">Date of birth:</label>
+                                <input type="date" [max]="maxDate" class="form-control input-lg" id="patientDOB" #patientDOB="ngModel" name="patientDOB" placeholder="dd/mmm/yyyy" [(ngModel)]="objectData.patientDOB" (change)="ageValidationForInput(objectData.patientDOB)">
+                                <small *ngIf="patientDOB.errors?.required && patientDOB.touched||objectData.patientDOB==''&&patientDOB.touched">Date of birth is required.</small>
+                                <small *ngIf="this.timeDiff<12 && patientDOB.touched|| dobValidationFailed">You have to be at least 12 year old to register for a vaccine.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="patientPhone.invalid && patientPhone.touched ||objectData.patientPhone==''&&patientPhone.touched|| phoneValidationFailed">
+                                <label class="control-label">Phone Number:</label>
+                                <input type="text" class="form-control input-lg" id="patientPhone" #patientPhone="ngModel" name="patientPhone" placeholder="Phone Number" [(ngModel)]="objectData.patientPhone" pattern="^[896]\d{7}$">
+                                <small *ngIf="patientPhone.errors?.required && patientPhone.touched||objectData.patientPhone==''&&patientPhone.touched">Phone is required.</small>
+                                <small *ngIf="patientPhone.errors?.pattern && patientPhone.touched|| phoneValidationFailed">Phone number should be 8 digits long and start with either 8, 9 or 6 (for landline).</small>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updatePatient()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--editPatientScheduleModal-->
+<ng-template class="modal fade" #editPatientScheduleModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%" >
+        <div class="modal-content" >
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Edit Patient Schedule</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <br>
+                            <div class="form-group">
+                                <label>First Vaccination Centre:</label>
+                                <select [(ngModel)]="this.patient.patientFirstCentre" name="bookFirstCentre" id="bookFirstCentre" class="form-control" (ngModelChange)="locationEqual()">
+                                    <option [ngValue]="null" disabled>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres|sortPipe">{{centre?.centreName}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group"[class.has-error]="dateValidationFailed">
+                                <label>First Vaccination Date:</label>
+                                <input type="date" [min]="minDateFirst" class="form-control input-lg" name="patientFirstDoseDate" placeholder="First Vaccination Timing" [(ngModel)]="patient.patientFirstDate" (ngModelChange)="dateValidation(patient.patientFirstDate, patient.patientSecondDate)">
+                                <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+                            </div>
+                            <div class="form-group" >
+                                <label>First Vaccination Time:</label>
+                                <input type="time" class="form-control input-lg" name="patientFirstDoseTime" placeholder="First Vaccination Timing" [(ngModel)]="patient.patientFirstTime">
+                            </div>
+
+                            <div class="form-group">
+                                <label>Second Vaccination Centre:</label>
+                                <select [(ngModel)]="this.patient.patientSecondCentre" name="bookSecondCentre" id="bookSecondCentre" class="form-control">
+                                    <option [ngValue]="null" disabled>--Select an option--</option>
+                                    <option [ngValue]="centre.centreName" *ngFor="let centre of centres|sortPipe">{{centre?.centreName}}</option>
+                                </select>
+                                <small *ngIf="patient.patientFirstCentre!= patient.patientSecondCentre" class="has-error">*Note: Location for first and second vaccination is different.</small>
+                            </div>
+                            <div class="form-group" [class.has-error]="dateValidationFailed">
+                                <label>Second Vaccination Date:</label>
+                                <input type="date" [min]="minDateSecond" class="form-control input-lg" name="patientSecondDoseDate" placeholder="Second Vaccination Timing" [(ngModel)]="patient.patientSecondDate" (ngModelChange)="dateValidation(patient.patientFirstDate, patient.patientSecondDate)">
+                                <small *ngIf="dateValidationFailed" class="has-error">Dates between your first & second does have to at least be 30 days apart.</small>
+                            </div>
+                            <div class="form-group">
+                                <label>Second Vaccination Time:</label>
+                                <input type="time" class="form-control input-lg" name="patientSecondDoseTime" placeholder="Second Vaccination Timing" [(ngModel)]="patient.patientSecondTime">
+                            </div>
+                            
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="updatePatientSchedule()">Save Changes</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

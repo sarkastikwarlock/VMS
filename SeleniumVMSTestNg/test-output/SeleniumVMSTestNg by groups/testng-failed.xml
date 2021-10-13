@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [SeleniumVMSTestNg by groups]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="GRP-UI,patient(failed)">
+    <groups>
+      <run>
+        <include name="UI"/>
+        <include name="patient"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="ui.TestCases">
+        <methods>
+          <include name="checkDeleteContent"/>
+          <include name="checkSessionPatient"/>
+          <include name="checkEditPatientModalContentPositiveCase"/>
+          <include name="checkNavigateToBookPage"/>
+          <include name="checkSubmitBookSlotWithValidationNegativeCase"/>
+          <include name="checkAdminTab"/>
+          <include name="checkEditInformationWithFilledPositiveCase"/>
+          <include name="checkPatientTabContent"/>
+          <include name="checkEditPatientInfomationPatternValidation"/>
+          <include name="checkPatientPagePositiveCase"/>
+          <include name="checkPersonalInformationPagePositiveCase"/>
+          <include name="checkEditInfomationWithValidationEmptyNegativeCase"/>
+          <include name="checkSessionAdmin"/>
+          <include name="checkSubmitBookSlotPositiveCase"/>
+          <include name="end"/>
+          <include name="checkAdminPagePositiveCase"/>
+          <include name="checkEditIconeClickable"/>
+          <include name="checkEditPatientClickable"/>
+          <include name="checkEditScheduleContent"/>
+          <include name="checkEditContent"/>
+          <include name="checkEditModalWithValidationNegativeCase"/>
+          <include name="checkPersonalInformationPageNegativeCase"/>
+          <include name="checkSubmitBookSlotNegativeCase"/>
+          <include name="checkDetailsContentWithVaccCentre"/>
+          <include name="checkEditInformationWithValidationDiffInputNegativeCase"/>
+          <include name="checkEditPatientModalContentNegativeCase"/>
+          <include name="checkEditScheduleWithValidationNegativeCase"/>
+          <include name="checkAddPatientPatternValidationNegativeCase"/>
+          <include name="checkEditPatientSaveChangePositiveCase"/>
+          <include name="checkPatientPageNegativeCase"/>
+          <include name="beforeTestForAdmin"/>
+          <include name="addPatientPositiveCase"/>
+          <include name="checkEditModalPositiveCase"/>
+          <include name="checkAddPatientClickable"/>
+          <include name="afterEachTest"/>
+          <include name="initialize"/>
+          <include name="checkAddPatientWithEmptyFieldNegativeCase"/>
+          <include name="checkAdminPageNegativeCase"/>
+          <include name="checkDetailsIconClickable"/>
+          <include name="checkDeleteIconClickable"/>
+          <include name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase"/>
+          <include name="checkDelete"/>
+          <include name="checkAddPatientContent"/>
+          <include name="checkViewVaccinationContent"/>
+          <include name="checkBookPageContent"/>
+          <include name="addPatientExistingPatientNegativeCase"/>
+          <include name="checkEditSchedulePositiveCase"/>
+        </methods>
+      </class> <!-- ui.TestCases -->
+    </classes>
+  </test> <!-- GRP-UI,patient(failed) -->
+</suite> <!-- Failed suite [SeleniumVMSTestNg by groups] -->

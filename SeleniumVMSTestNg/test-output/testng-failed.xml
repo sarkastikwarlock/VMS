@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Patient Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Patient(failed)">
+    <groups>
+      <run>
+        <include name="patient"/>
+        <include name="UI"/>
+        <exclude name="admin"/>
+      </run>
+    </groups>
+    <classes>
+      <class name="ui.TestCases">
+        <methods>
+          <include name="checkEditModalWithValidationNegativeCase"/>
+          <include name="checkNavigateToBookPage"/>
+          <include name="checkSubmitBookSlotNegativeCase"/>
+          <include name="checkSubmitBookSlotWithValidationNegativeCase"/>
+          <include name="checkEditPatientSaveChangePositiveCase"/>
+          <include name="checkEditPatientInfomationPatternValidation"/>
+          <include name="checkEditModalPositiveCase"/>
+          <include name="afterEachTest"/>
+          <include name="checkSubmitBookSlotPositiveCase"/>
+          <include name="beforeTestForPatient"/>
+          <include name="end"/>
+          <include name="initialize"/>
+          <include name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase"/>
+          <include name="checkViewVaccinationContent"/>
+          <include name="checkBookPageContent"/>
+          <include name="checkEditPatientClickable"/>
+          <include name="checkEditScheduleContent"/>
+        </methods>
+      </class> <!-- ui.TestCases -->
+    </classes>
+  </test> <!-- Patient(failed) -->
+</suite> <!-- Failed suite [Patient Suite] -->

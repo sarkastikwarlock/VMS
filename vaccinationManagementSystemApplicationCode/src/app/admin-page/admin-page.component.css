@@ -1,0 +1,217 @@
+.adminPage{
+    width: 95%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border-top-left-radius: 1px;
+    border-top-right-radius: 1px;
+    border: 1px solid #ccc;
+    border-bottom: none;
+    background-color: white;
+  }
+  
+  /* Style the buttons inside the tab */
+  .tab button {
+    background-color: #f1f1f1;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+  
+  /* Change background color of buttons on hover */
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  /* Create an active/current tablink class */
+  .tab button.active {
+    border-bottom: none;
+    outline: none;
+    background-color:white;
+  }
+  
+  /* Style the tab content */
+  .tabcontent {
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    border-top: none;
+  }
+  
+  .addBtn{
+    background-color: #ddd;
+    float: left;
+    border: none;
+    border-radius: 20px;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 17px;
+  }
+
+  .addBtn:hover {
+    background-color: #ccc;
+  }
+
+  .iconBtn{
+    border: none;
+    outline: none;
+    background-color: inherit;
+    padding: 0 0 0 0;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  
+
+  .switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  .switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #38EE6E;
+  }
+  
+  input:focus + .slider {
+    box-shadow: 0 0 1px #38EE6E;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+
+  /* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.feedbackPage{
+  width: 60%;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.ratingsBtn{
+  margin:auto;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+.ratingsBtn input[type=radio]{
+  display: none;
+}
+
+.ratingsBtn input[type=radio]:checked + .bi {
+  color: #38EE6E
+}
+
+.ratingsBtn{
+  margin:auto;
+  background-color: white;
+  border: none;
+  cursor: pointer;
+}
+
+.feedbackIcon{
+  display: flex;
+  width: 80%;
+  margin: auto;
+}
+
+small{
+  display: block;
+  text-align: center;
+}
+
+.bi{
+  display: block;
+  text-align: center;
+}
+
+.radioBtn{
+  display:none;
+}
+
+.typeBtn{
+  text-align: center;
+  cursor:pointer;
+}
+
+.typeChoice{
+  background-color: white; /* Green */
+  border: 1px solid#B8BDBA;
+  border-radius: 3px;
+  color: #282A28;
+  padding: 10px 30px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+#compliment:checked ~ label .contentDiv1{
+  color: #38EE6E;
+  border-color: #38EE6E
+}
+
+#suggestion:checked ~ label .contentDiv2{
+  color: #38EE6E;
+  border-color: #38EE6E
+}
+
+#complain:checked ~ label .contentDiv3{
+  color: #38EE6E;
+  border-color: #38EE6E
+}
+
+small{
+  text-align: left;
+}

@@ -1,0 +1,37 @@
+.register{
+    width: 50%;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.btnGroup{
+    width:40%;
+    display: inline;
+    margin-left: auto;
+    margin-right: auto;
+    
+}
+
+form-control.vaccineCheckbox{
+    display: flex;
+    color: white;
+    border: 1px solide white;
+}
+
+.cancelBtn{
+    background-color:  white;
+    color: #007bff;
+}
+
+.cancelBtn:hover{
+    background-color: #d6d6d6;
+    border-color: #007bff;
+}
+
+.submitBtn .cancelBtn{
+    box-sizing: content-box;
+    padding: 8px 10px;
+    margin: 5px 4px 10px 0;
+}
+

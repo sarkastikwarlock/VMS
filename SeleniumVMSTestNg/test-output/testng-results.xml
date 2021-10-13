@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results ignored="23" total="43" passed="20" failed="0" skipped="0">
+  <reporter-output>
+  </reporter-output>
+  <suite started-at="2021-10-13T21:26:26 SGT" name="Patient Suite" finished-at="2021-10-13T21:28:19 SGT" duration-ms="113325">
+    <groups>
+      <group name="UI">
+        <method signature="TestCases.checkBookPageContent()[pri:13, instance:ui.TestCases@543588e6]" name="checkBookPageContent" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditModalPositiveCase()[pri:19, instance:ui.TestCases@543588e6]" name="checkEditModalPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditModalWithValidationNegativeCase()[pri:20, instance:ui.TestCases@543588e6]" name="checkEditModalWithValidationNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientClickable()[pri:8, instance:ui.TestCases@543588e6]" name="checkEditPatientClickable" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientInfomationPatternValidation()[pri:9, instance:ui.TestCases@543588e6]" name="checkEditPatientInfomationPatternValidation" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase()[pri:10, instance:ui.TestCases@543588e6]" name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientModalContentNegativeCase()[pri:7, instance:ui.TestCases@543588e6]" name="checkEditPatientModalContentNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientModalContentPositiveCase()[pri:6, instance:ui.TestCases@543588e6]" name="checkEditPatientModalContentPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientSaveChangePositiveCase()[pri:11, instance:ui.TestCases@543588e6]" name="checkEditPatientSaveChangePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditScheduleContent()[pri:18, instance:ui.TestCases@543588e6]" name="checkEditScheduleContent" class="ui.TestCases"/>
+        <method signature="TestCases.checkNavigateToBookPage()[pri:12, instance:ui.TestCases@543588e6]" name="checkNavigateToBookPage" class="ui.TestCases"/>
+        <method signature="TestCases.checkPatientPageNegativeCase()[pri:3, instance:ui.TestCases@543588e6]" name="checkPatientPageNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPatientPagePositiveCase()[pri:2, instance:ui.TestCases@543588e6]" name="checkPatientPagePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPersonalInformationPageNegativeCase()[pri:5, instance:ui.TestCases@543588e6]" name="checkPersonalInformationPageNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPersonalInformationPagePositiveCase()[pri:4, instance:ui.TestCases@543588e6]" name="checkPersonalInformationPagePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSessionPatient()[pri:1, instance:ui.TestCases@543588e6]" name="checkSessionPatient" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotNegativeCase()[pri:14, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotPositiveCase()[pri:15, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotWithValidationNegativeCase()[pri:16, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotWithValidationNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkViewVaccinationContent()[pri:17, instance:ui.TestCases@543588e6]" name="checkViewVaccinationContent" class="ui.TestCases"/>
+      </group> <!-- UI -->
+      <group name="patient">
+        <method signature="TestCases.checkBookPageContent()[pri:13, instance:ui.TestCases@543588e6]" name="checkBookPageContent" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditModalPositiveCase()[pri:19, instance:ui.TestCases@543588e6]" name="checkEditModalPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditModalWithValidationNegativeCase()[pri:20, instance:ui.TestCases@543588e6]" name="checkEditModalWithValidationNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientClickable()[pri:8, instance:ui.TestCases@543588e6]" name="checkEditPatientClickable" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientInfomationPatternValidation()[pri:9, instance:ui.TestCases@543588e6]" name="checkEditPatientInfomationPatternValidation" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase()[pri:10, instance:ui.TestCases@543588e6]" name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientModalContentNegativeCase()[pri:7, instance:ui.TestCases@543588e6]" name="checkEditPatientModalContentNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientModalContentPositiveCase()[pri:6, instance:ui.TestCases@543588e6]" name="checkEditPatientModalContentPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditPatientSaveChangePositiveCase()[pri:11, instance:ui.TestCases@543588e6]" name="checkEditPatientSaveChangePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkEditScheduleContent()[pri:18, instance:ui.TestCases@543588e6]" name="checkEditScheduleContent" class="ui.TestCases"/>
+        <method signature="TestCases.checkNavigateToBookPage()[pri:12, instance:ui.TestCases@543588e6]" name="checkNavigateToBookPage" class="ui.TestCases"/>
+        <method signature="TestCases.checkPatientPageNegativeCase()[pri:3, instance:ui.TestCases@543588e6]" name="checkPatientPageNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPatientPagePositiveCase()[pri:2, instance:ui.TestCases@543588e6]" name="checkPatientPagePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPersonalInformationPageNegativeCase()[pri:5, instance:ui.TestCases@543588e6]" name="checkPersonalInformationPageNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkPersonalInformationPagePositiveCase()[pri:4, instance:ui.TestCases@543588e6]" name="checkPersonalInformationPagePositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSessionPatient()[pri:1, instance:ui.TestCases@543588e6]" name="checkSessionPatient" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotNegativeCase()[pri:14, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotPositiveCase()[pri:15, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotPositiveCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkSubmitBookSlotWithValidationNegativeCase()[pri:16, instance:ui.TestCases@543588e6]" name="checkSubmitBookSlotWithValidationNegativeCase" class="ui.TestCases"/>
+        <method signature="TestCases.checkViewVaccinationContent()[pri:17, instance:ui.TestCases@543588e6]" name="checkViewVaccinationContent" class="ui.TestCases"/>
+      </group> <!-- patient -->
+    </groups>
+    <test started-at="2021-10-13T21:26:26 SGT" name="Patient" finished-at="2021-10-13T21:28:19 SGT" duration-ms="113325">
+      <class name="ui.TestCases">
+        <test-method is-config="true" signature="beforeTestForPatient()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:26 SGT" name="beforeTestForPatient" finished-at="2021-10-13T21:26:26 SGT" duration-ms="8" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeTestForPatient -->
+        <test-method is-config="true" signature="initialize()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:26 SGT" name="initialize" finished-at="2021-10-13T21:26:30 SGT" duration-ms="4761" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialize -->
+        <test-method signature="checkSessionPatient()[pri:1, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:30 SGT" name="checkSessionPatient" finished-at="2021-10-13T21:26:32 SGT" duration-ms="1173" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSessionPatient -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:32 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:33 SGT" duration-ms="1017" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkPatientPagePositiveCase()[pri:2, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:33 SGT" name="checkPatientPagePositiveCase" finished-at="2021-10-13T21:26:34 SGT" duration-ms="1074" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkPatientPagePositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:34 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:35 SGT" duration-ms="1001" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkPatientPageNegativeCase()[pri:3, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:35 SGT" name="checkPatientPageNegativeCase" finished-at="2021-10-13T21:26:35 SGT" duration-ms="71" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkPatientPageNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:35 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:36 SGT" duration-ms="1000" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkPersonalInformationPagePositiveCase()[pri:4, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:36 SGT" name="checkPersonalInformationPagePositiveCase" finished-at="2021-10-13T21:26:38 SGT" duration-ms="2211" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkPersonalInformationPagePositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:38 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:39 SGT" duration-ms="1005" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkPersonalInformationPageNegativeCase()[pri:5, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:39 SGT" name="checkPersonalInformationPageNegativeCase" finished-at="2021-10-13T21:26:41 SGT" duration-ms="2166" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkPersonalInformationPageNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:41 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:42 SGT" duration-ms="1005" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientModalContentPositiveCase()[pri:6, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:42 SGT" name="checkEditPatientModalContentPositiveCase" finished-at="2021-10-13T21:26:47 SGT" duration-ms="4654" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientModalContentPositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:47 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:48 SGT" duration-ms="1006" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientModalContentNegativeCase()[pri:7, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:48 SGT" name="checkEditPatientModalContentNegativeCase" finished-at="2021-10-13T21:26:51 SGT" duration-ms="3527" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientModalContentNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:51 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:52 SGT" duration-ms="1004" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientClickable()[pri:8, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:52 SGT" name="checkEditPatientClickable" finished-at="2021-10-13T21:26:55 SGT" duration-ms="2217" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientClickable -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:55 SGT" name="afterEachTest" finished-at="2021-10-13T21:26:56 SGT" duration-ms="1008" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientInfomationPatternValidation()[pri:9, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:26:56 SGT" name="checkEditPatientInfomationPatternValidation" finished-at="2021-10-13T21:27:01 SGT" duration-ms="4891" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientInfomationPatternValidation -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:01 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:02 SGT" duration-ms="1007" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase()[pri:10, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:02 SGT" name="checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase" finished-at="2021-10-13T21:27:10 SGT" duration-ms="8580" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientInformationIsFilledValidationWithSaveChangesNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:10 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:11 SGT" duration-ms="1008" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditPatientSaveChangePositiveCase()[pri:11, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:11 SGT" name="checkEditPatientSaveChangePositiveCase" finished-at="2021-10-13T21:27:19 SGT" duration-ms="7459" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditPatientSaveChangePositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:19 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:20 SGT" duration-ms="1002" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkNavigateToBookPage()[pri:12, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:20 SGT" name="checkNavigateToBookPage" finished-at="2021-10-13T21:27:22 SGT" duration-ms="2146" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkNavigateToBookPage -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:22 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:23 SGT" duration-ms="1006" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkBookPageContent()[pri:13, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:23 SGT" name="checkBookPageContent" finished-at="2021-10-13T21:27:27 SGT" duration-ms="4254" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkBookPageContent -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:27 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:28 SGT" duration-ms="1005" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkSubmitBookSlotNegativeCase()[pri:14, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:28 SGT" name="checkSubmitBookSlotNegativeCase" finished-at="2021-10-13T21:27:32 SGT" duration-ms="3875" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSubmitBookSlotNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:32 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:33 SGT" duration-ms="1013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkSubmitBookSlotPositiveCase()[pri:15, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:33 SGT" name="checkSubmitBookSlotPositiveCase" finished-at="2021-10-13T21:27:41 SGT" duration-ms="7670" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSubmitBookSlotPositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:41 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:42 SGT" duration-ms="1014" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkSubmitBookSlotWithValidationNegativeCase()[pri:16, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:42 SGT" name="checkSubmitBookSlotWithValidationNegativeCase" finished-at="2021-10-13T21:27:51 SGT" duration-ms="9837" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkSubmitBookSlotWithValidationNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:51 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:52 SGT" duration-ms="1001" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkViewVaccinationContent()[pri:17, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:52 SGT" name="checkViewVaccinationContent" finished-at="2021-10-13T21:27:56 SGT" duration-ms="3493" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkViewVaccinationContent -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:56 SGT" name="afterEachTest" finished-at="2021-10-13T21:27:57 SGT" duration-ms="1014" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditScheduleContent()[pri:18, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:27:57 SGT" name="checkEditScheduleContent" finished-at="2021-10-13T21:28:00 SGT" duration-ms="2978" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditScheduleContent -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:00 SGT" name="afterEachTest" finished-at="2021-10-13T21:28:01 SGT" duration-ms="1013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditModalPositiveCase()[pri:19, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:01 SGT" name="checkEditModalPositiveCase" finished-at="2021-10-13T21:28:09 SGT" duration-ms="7874" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditModalPositiveCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:09 SGT" name="afterEachTest" finished-at="2021-10-13T21:28:10 SGT" duration-ms="1010" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method signature="checkEditModalWithValidationNegativeCase()[pri:20, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:10 SGT" name="checkEditModalWithValidationNegativeCase" finished-at="2021-10-13T21:28:18 SGT" duration-ms="7985" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- checkEditModalWithValidationNegativeCase -->
+        <test-method is-config="true" signature="afterEachTest()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:18 SGT" name="afterEachTest" finished-at="2021-10-13T21:28:19 SGT" duration-ms="1013" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterEachTest -->
+        <test-method is-config="true" signature="end()[pri:0, instance:ui.TestCases@543588e6]" started-at="2021-10-13T21:28:19 SGT" name="end" finished-at="2021-10-13T21:28:19 SGT" duration-ms="218" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- end -->
+      </class> <!-- ui.TestCases -->
+    </test> <!-- Patient -->
+  </suite> <!-- Patient Suite -->
+</testng-results>

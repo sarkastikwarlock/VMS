@@ -1,0 +1,94 @@
+<!--login modal-->
+
+<div id="loginModal" class="flexbox show" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+        <div class="flexbox-content">
+            <div class="flexbox-header">
+                <h1 class="text-center">Login</h1><br>
+            </div>
+            <div class="flexbox-body">
+                <form class="form col-md-12 center-block" #loginPage="ngForm">
+                    <div class="form-group">
+                        <input type="text" name="inputNric" class="form-control input-lg" placeholder="NRIC" [(ngModel)]="userId">
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="inputPassword" class="form-control input-lg" placeholder="Password" [(ngModel)]="userPassword">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="signInBtn" class="btn btn-primary btn-lg btn-block signInBtn" (click)="loginUser()">Sign In</button>
+                        <hr>
+                        <button type="button" name="registerBtn" class="btn btn-primary btn-lg btn-block registerBtn" (click)="register()">Register</button>
+                        <span class="pull-right"><a name="forgotId" href="#" (click)="onOpenModal(null, forgotPasswordIdModal)">Forgot ID</a></span><span><a name="forgotPassword" href="#" (click)="onOpenModal(null, forgotPasswordIdModal)">Forgot Password</a></span>
+                    </div>
+                </form>
+            </div>
+            <div class="flexbox-footer">
+                <div class="col-md-1accordion2"></div>	
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--forgotPasswordIdModal-->
+<ng-template class="modal fade" #forgotPasswordIdModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Forgot password/id</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Please enter the email that you have registered with:</label>
+                            </div>
+                            <div class="form-group">
+                                <label>Email: </label><br>
+                                <input type="text" class="form-control input-lg" name="email" placeholder="Email" [(ngModel)]="emailToSend">
+                            </div>
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="ifEmailExist(emailToSend, afterSendModal)">Send email</button>
+                <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal" (click)="onCloseModal()">Cancel</button>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<!--afterSendModal-->
+<ng-template class="modal fade" #afterSendModal data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" style="width: 90%">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="onCloseModal()">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="flexbox-body">
+                    <form class="form col-md-12 center-block">
+                        <div class="form-group">
+                            <div class="form-group">
+                                <label>Please follow the instructions that have been sent to your email.</label>
+                            </div>
+                            
+                            <br>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="modal-footer"  style="margin:auto">
+                <button type="button" class="btn btn-primary" (click)="onCloseModal()">Ok</button>
+            </div>
+        </div>
+    </div>
+</ng-template>

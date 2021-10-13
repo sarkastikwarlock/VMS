@@ -1,0 +1,42 @@
+<div id="feedbackPageModal" class="flexbox show card feedbackPage" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="flexbox-dialog">
+        <div class="flexbox-content">
+            <div class="flexbox-header"><br>
+                <h2 class="text-center">Feedback Page</h2><br>
+            </div>
+            <div class="flexbox-body">
+                <form class="form col-md-12 center-block">    
+                  <div class="form-group">
+                    <label>Feedback Type: </label>
+                      <div class="form-group typeBtn">
+                        <br>
+                        <input type="radio" id="compliment" name="type"  class="radioBtn"><label for="compliment"><div class="contentDiv1 typeChoice">Compliment</div></label>
+                        <input type="radio" id="suggestion" name="type" class="radioBtn"><label for="suggestion"><div class="contentDiv2 typeChoice">Suggestion</div></label>
+                        <input type="radio" id="complain" name="type" class="radioBtn"><label for="somethingOff"><div class="contentDiv3 typeChoice">Complain</div></label>
+                      </div>
+                      <div>
+                        <label>Feedback Ratings:</label>
+                        <br>
+                        <div  class="feedbackIcon">
+                            <label for="sunglasses" class="ratingsBtn"><input type="radio" id="sunglasses" name="ratings" value="5"><h1 class="bi bi-emoji-sunglasses"></h1><small  for="awesome">Awesome!</small></label>
+                            <label for="smile" class="ratingsBtn"><input type="radio" id="smile" name="ratings" value="4"><h1 class="bi bi-emoji-smile"></h1><small for="smile">Good!</small></label>
+                            <label for="neutral" class="ratingsBtn"><input type="radio" id="neutral" name="ratings" value="3"><h1 class="bi bi-emoji-neutral"></h1><small for="neutral">Ok!</small></label>
+                            <label for="frown" class="ratingsBtn"><input type="radio" id="frown" name="ratings" value="2"><h1 class="bi bi-emoji-frown"></h1><small for="frown">Meh!</small></label>
+                            <label for="dizzy" class="ratingsBtn"><input type="radio" id="dizzy" name="ratings" value="1"><h1 class="bi bi-emoji-dizzy"></h1><small for="dizzy">...!</small></label>
+                        </div>
+                        <br>
+                      </div>
+                      <div class="form-group">
+                        <label>Feedback Details:</label>
+                        <textarea type="text" class="form-control input-lg" placeholder="Feedback Details..."></textarea>
+                      </div>
+                  </div>
+                </form>
+                </div>
+        <div class="modal-footer"  style="margin:auto">
+            <button type="button" class="btn btn-primary">Edit Information</button>
+          <button type="button" class="btn btn-secondary cancelBtn" ngbAutofocus data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+</div>
